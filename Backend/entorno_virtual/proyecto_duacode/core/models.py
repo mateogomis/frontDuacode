@@ -12,6 +12,7 @@ class Empleado(models.Model): #Empleado hereda de models.Model
     cumpleaños = models.DateField()                   # Fecha de nacimiento
     is_on_leave = models.BooleanField(default=False)     # Indicador de si está de baja/vacaciones
     foto = models.ImageField(upload_to='empleados/', blank=True, null=True)  # Foto del empleado
+    
 
     def __str__(self):
         #Así nos mostrara en el panel de Admon con el formato : "Nombre Apellido Apellido"

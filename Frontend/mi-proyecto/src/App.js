@@ -1,12 +1,10 @@
-// src/App.js
 import React from 'react';
-import EmployeeList from './components/EmployeeList';
+import EmpleadoManager from './EmpleadoManager';
 
 const App = () => {
   return (
     <div>
-      <h1>Mi Aplicación de Empleados</h1>
-      <EmployeeList />
+      <EmpleadoManager />
     </div>
   );
 };

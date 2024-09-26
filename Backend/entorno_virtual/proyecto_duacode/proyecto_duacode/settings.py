@@ -73,9 +73,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', # Para poder acceder desde el front
 ]
 #Configuración cors para acceder desde el frontend
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # URL del frontend
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'proyecto_duacode.urls'
 
