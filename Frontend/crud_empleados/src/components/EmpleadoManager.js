@@ -15,7 +15,7 @@ const EmpleadoManager = () => {
         is_on_leave: false,
         foto: null,
     });
-    const [editingEmpleadoId, setEditingEmpleadoId] = useState(null); // ID del empleado que se está editando
+    const [editingEmpleadoId, setEditingEmpleadoId] = useState(null);
 
     // Cargar empleados
     const fetchEmpleados = async () => {
@@ -130,6 +130,13 @@ const EmpleadoManager = () => {
             <ul>
                 {empleados.map((empleado) => (
                     <li key={empleado.id}>
+                        {empleado.foto && (
+                            <img
+                                src={empleado.foto} // Cambia la URL según tu configuración
+                                alt={`${empleado.nombre} ${empleado.apellido_1}`}
+                                style={{ width: '50px', height: '50px', marginRight: '10px' }} // Estilo para la imagen
+                            />
+                        )}
                         {empleado.nombre} {empleado.apellido_1}
                         <button onClick={() => editEmpleado(empleado)}>Editar</button>
                         <button onClick={() => deleteEmpleado(empleado.id)}>Eliminar</button>
