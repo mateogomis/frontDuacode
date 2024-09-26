@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-fg9l&4x*jdh+1ct_*g4$1r1q9i-gi)@gs998x8olw537p$az7o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['belami.pythonanywhere.com']
 
 # Application definition
 
@@ -99,12 +98,17 @@ WSGI_APPLICATION = 'proyecto_duacode.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  # Asegúrate de que la ruta sea correcta
     }
 }
+
 
 
 # Password validation
