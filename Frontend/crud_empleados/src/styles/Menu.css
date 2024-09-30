@@ -4,7 +4,7 @@
     top: 0;
     left: -250px; /* Inicialmente oculto fuera de la pantalla */
     width: 250px;
-    background-color: #61368c;
+    background-color: #61368cf1;
     height: 100vh;
     padding-top: 60px;
     transition: left 0.3s ease;

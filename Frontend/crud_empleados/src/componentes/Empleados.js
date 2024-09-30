@@ -4,48 +4,69 @@ import '../styles/empleados.css';  // Asegúrate de que el CSS está en la ruta 
 
 const Empleados = () => {
   const [empleados, setEmpleados] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
   const [formData, setFormData] = useState({
-      nombre: '',
-      apellido_1: '',
-      apellido_2: '',
-      email: '',
-      telefono: '',
-      puesto: '',
-      fecha_contratación: '',
-      cumpleaños: '',
-      is_on_leave: false,
-      foto: null,
+    nombre: '',
+    apellido_1: '',
+    apellido_2: '',
+    email: '',
+    telefono: '',
+    puesto: '',
+    fecha_contratación: '',
+    cumpleaños: '',
+    is_on_leave: false,
+    foto: null,
   });
+
   const [editingEmpleadoId, setEditingEmpleadoId] = useState(null);
 
   // Cargar empleados
   const fetchEmpleados = async () => {
-      try {
-          const response = await axios.get('http://localhost:8000/api/empleados/');
-          setEmpleados(response.data);
-      } catch (error) {
-          console.error('Error fetching empleados:', error);
-      }
+    try {
+      const response = await axios.get('http://localhost:8000/api/empleados/');
+      setEmpleados(response.data);
+    } catch (error) {
+      console.error('Error fetching empleados:', error);
+    }
   };
 
   useEffect(() => {
-      fetchEmpleados();
+    fetchEmpleados();
   }, []);
+
+  // Filtra los empleados según el término de búsqueda
+  const filteredEmpleados = empleados.filter((empleado) =>
+    `${empleado.nombre} ${empleado.apellido_1}`.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="employees-container">
-      {empleados.map((empleado) => (
-        <div className="employee-card" key={empleado.id}>
-          {empleado.foto && (
+      {/* Barra de búsqueda */}
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Buscar empleado..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}  // Actualiza el estado del término de búsqueda
+        />
+      </div>
+
+      {/* Grid de empleados */}
+      <div className="employees-grid">
+        {filteredEmpleados.map((empleado) => (
+          <div className="employee-card" key={empleado.id}>
+            {empleado.foto && (
               <img
-                  src={empleado.foto} // Cambia la URL según tu configuración
-                  alt={`${empleado.nombre} ${empleado.apellido_1}`}
-                  style={{ width: '50px', height: '50px', marginRight: '10px' }} // Estilo para la imagen
+                src={empleado.foto}
+                alt={`${empleado.nombre} ${empleado.apellido_1}`}
+                style={{ width: '50px', height: '50px', borderRadius: '50%' }}
               />
-          )}
-          <p>{empleado.nombre} {empleado.apellido_1}</p>
-        </div>
-      ))}
+            )}
+            <p>{empleado.nombre} {empleado.apellido_1}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
