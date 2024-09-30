@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    overflow-x: hidden; /* Evita desbordamiento lateral */
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.menu-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 35px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1002; /* Asegura que esté encima de todo */
+}
+
+.menu-button span {
+    background-color: #fff;
+    height: 5px;
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Estilos para el menú desplegable */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Fuera de la vista inicialmente */
+    width: 250px;
+    background-color: #61368ce5;
+    height: 100vh; /* Cubre toda la pantalla */
+    padding-top: 60px;
+    transition: left 0.3s ease;
+    color: #fff;
+    text-align: center;
+    z-index: 1001;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Ajuste del espacio entre los componentes */
+.sidebar ul li {
+    margin: 10px 0; /* Reducir el margen entre los elementos */
+    cursor: pointer;
+    padding: 5px; /* Reducir el espacio interno */
+}
+
+/* Nuevos estilos para los enlaces */
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff; /* Color blanco por defecto */
+    display: block;
+    padding: 8px; /* Reducir padding interno del enlace */
+    font-size: 18px; /* Tamaño de fuente */
+    font-style: italic; /* Estilo cursiva */
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+.sidebar ul li a:hover {
+    color: #ff009d; /* Cambia a rosa al pasar el mouse */
+}
+
+/* Imagen de logo */
+.sidebar ul li img {
+    width: 100px;
+    height: auto;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main {
+    width: 100%;
+    background-color: #fff;
+    transition: margin-left 0.3s ease;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 900; /* Está debajo de la barra lateral */
+}
+
+.header {
+    background-color: #61368C;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000000;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1000; /* Asegura que esté encima del contenido principal */
+    height: 60px;
+}
+
+.header h1 {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    font-size: 30px;
+    margin-left: 50px;
+    font-weight: bold;
+}
+
+.header h1 span {
+    color: #ff009d;
+}
+
+.icons {
+    font-size: 24px;
+}
+
+.icon-bell, .icon-login {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-top: 100px;
+    text-align: center;
+}
+
+/* Estilos del menú activo */
+.sidebar.active {
+    left: 0; /* Mueve el menú a la vista */
+}
+
+.main.active {
+    margin-left: 250px; /* Empuja el contenido cuando el menú está abierto */
+}
+
+.header.active {
+    margin-left: 250px; /* También empuja el header */
+}
+
+/* Cambia el icono de hamburguesa a "X" */
+.menu-button.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+}
+
+.menu-button.active span:nth-child(2) {
+    opacity: 0; /* Desaparece la segunda línea */
+}
+
+.menu-button.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px);
+}
