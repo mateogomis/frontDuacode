@@ -107,7 +107,6 @@ const EmpleadoManager = () => {
          });
          setEditingEmpleadoId(null);
      };
->>>>>>> d36ea76ad7275d7740fdda4695aaf9f666ef7e9e
 
     return (
         <div>
