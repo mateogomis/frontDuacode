@@ -41,33 +41,34 @@ const Empleados = () => {
   );
 
   return (
-    <div className="employees-container">
-      {/* Barra de búsqueda */}
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Buscar empleado..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}  // Actualiza el estado del término de búsqueda
-        />
-      </div>
+    // <div className="employees-container">
+    //   {/* Barra de búsqueda */}
+    //   <div className="search-bar">
+    //     <input
+    //       type="text"
+    //       placeholder="Buscar empleado..."
+    //       value={searchTerm}
+    //       onChange={(e) => setSearchTerm(e.target.value)}  // Actualiza el estado del término de búsqueda
+    //     />
+    //   </div>
 
-      {/* Grid de empleados */}
-      <div className="employees-grid">
-        {filteredEmpleados.map((empleado) => (
-          <div className="employee-card" key={empleado.id}>
-            {empleado.foto && (
-              <img
-                src={empleado.foto}
-                alt={`${empleado.nombre} ${empleado.apellido_1}`}
-                style={{ width: '50px', height: '50px', borderRadius: '50%' }}
-              />
-            )}
-            <p>{empleado.nombre} {empleado.apellido_1}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    //   {/* Grid de empleados */}
+    //   <div className="employees-grid">
+    //     {filteredEmpleados.map((empleado) => (
+    //       <div className="employee-card" key={empleado.id}>
+    //         {empleado.foto && (
+    //           <img
+    //             src={empleado.foto}
+    //             alt={`${empleado.nombre} ${empleado.apellido_1}`}
+    //             style={{ width: '50px', height: '50px', borderRadius: '50%' }}
+    //           />
+    //         )}
+    //         <p>{empleado.nombre} {empleado.apellido_1}</p>
+    //       </div>
+    //     ))}
+    //   </div>
+    // </div>
+    <p>hola</p>
   );
 };
 

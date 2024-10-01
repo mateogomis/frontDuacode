@@ -15,18 +15,7 @@ function App() {
   return (
     <>
       <Inicio /> {/* El menú siempre estará visible */}
-      <div className="content-wrapper"> {/* Contenedor para todo el contenido */}
-        <Routes>
-          <Route path="/inicio" element={<Inicio />} />
-          <Route path="/empleados" element={<EmpleadoManager />} />
-          <Route path="/empleados" element={<Empleados/>} />
-          <Route path="/proyectos" element={<Proyectos />} />
-          <Route path="/configuracion" element={<Configuracion />} />
-          <Route path="/multisede" element={<Multisede />} />
-          <Route path="/organigrama" element={<Organigrama />} />
-          <Route path="/protocolo" element={<Protocolo />} />
-          <Route path="/salas" element={<Salas />} />
-        </Routes>
+      <div className="content-wrapper"> 
       </div>
     </>
   );

@@ -10,6 +10,7 @@ import Salas from './Salas';
 import '../styles/Menu.css'; // Asegúrate de que este archivo esté correctamente vinculado
 import Principal from './Principal';
 import Empleados from './Empleados';
+import Test from './Test';
 
 function Inicio() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -38,6 +39,7 @@ function Inicio() {
           <li><Link to="/organigrama" onClick={toggleMenu}>Organigrama</Link></li>
           <li><Link to="/protocolo" onClick={toggleMenu}>Protocolos</Link></li>
           <li><Link to="/multisede" onClick={toggleMenu}>Multisede</Link></li>
+          <li><Link to="/test" onClick={toggleMenu}>Test</Link></li>
           <li><Link to="/configuracion" onClick={toggleMenu}>Configuración</Link></li>
         </ul>
       </div>
@@ -59,6 +61,7 @@ function Inicio() {
             <Route path="/organigrama" element={<Organigrama />} />
             <Route path="/protocolo" element={<Protocolo />} />
             <Route path="/multisede" element={<Multisede />} />
+            <Route path="/test" element={<Test />} />
             <Route path="/configuracion" element={<Configuracion />} />
           </Routes>
         </div>
