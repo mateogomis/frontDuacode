@@ -11,3 +11,4 @@ Notas Panel de administración Django
  Creación de empleados ejecutar:
    Ejecuta el script generar_empleados.py proyecto_duacode/core/management/commands/generar_empleados.py
     "python manage.py generar_empleados"
+    python manage.py runserver  

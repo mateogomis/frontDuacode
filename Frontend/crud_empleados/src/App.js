@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Inicio from './componentes/Inicio';
-// import Empleados from './componentes/Empleados';
+import Empleados from './componentes/Empleados';
 import Proyectos from './componentes/Proyectos';
 import Configuracion from './componentes/Configuracion';
 import Multisede from './componentes/Multisede';
@@ -9,6 +9,7 @@ import Organigrama from './componentes/Organigrama';
 import Protocolo from './componentes/Protocolo';
 import Salas from './componentes/Salas';
 import EmpleadoManager from './componentes/EmpleadoManager';
+
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/inicio" element={<Inicio />} />
           <Route path="/empleados" element={<EmpleadoManager />} />
+          <Route path="/empleados" element={<Empleados/>} />
           <Route path="/proyectos" element={<Proyectos />} />
           <Route path="/configuracion" element={<Configuracion />} />
           <Route path="/multisede" element={<Multisede />} />

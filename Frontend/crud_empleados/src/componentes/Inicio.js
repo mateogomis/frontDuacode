@@ -9,6 +9,7 @@ import Protocolo from './Protocolo';
 import Salas from './Salas';
 import '../styles/Menu.css'; // Asegúrate de que este archivo esté correctamente vinculado
 import Principal from './Principal';
+import Empleados from './Empleados';
 
 function Inicio() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -31,6 +32,7 @@ function Inicio() {
         <ul>
           <li><Link to="/inicio" onClick={toggleMenu}>Inicio</Link></li>
           <li><Link to="/empleados" onClick={toggleMenu}>Empleados</Link></li>
+          <li><Link to="/detalleEmpleado" onClick={toggleMenu}>detalleEmpleado</Link></li>
           <li><Link to="/proyectos" onClick={toggleMenu}>Proyectos</Link></li>
           <li><Link to="/salas" onClick={toggleMenu}>Salas</Link></li>
           <li><Link to="/organigrama" onClick={toggleMenu}>Organigrama</Link></li>
@@ -51,6 +53,7 @@ function Inicio() {
           <Routes>
             <Route path="/inicio" element={<Principal/>} />
             <Route path="/empleados" element={<EmpleadoManager />} />
+            <Route path="/detalleEmpleado" element={<Empleados />} />
             <Route path="/proyectos" element={<Proyectos />} />
             <Route path="/salas" element={<Salas />} />
             <Route path="/organigrama" element={<Organigrama />} />
