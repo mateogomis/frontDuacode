@@ -28,86 +28,86 @@ const EmpleadoManager = () => {
         fetchEmpleados();
     }, []);
 
-    // Crear o actualizar empleado
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const formDataToSend = new FormData();
-    //     for (const key in formData) {
-    //         if (key !== 'foto' || formData[key]) { // Solo agregar foto si existe
-    //             formDataToSend.append(key, formData[key]);
-    //         }
-    //     }
+    //Crear o actualizar empleado
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formDataToSend = new FormData();
+        for (const key in formData) {
+            if (key !== 'foto' || formData[key]) { // Solo agregar foto si existe
+                formDataToSend.append(key, formData[key]);
+            }
+        }
 
-    //     try {
-    //         if (editingEmpleadoId) {
-    //             // Actualizar empleado
-    //             await axios.put(`http://localhost:8000/api/empleados/${editingEmpleadoId}/`, formDataToSend, {
-    //                 headers: {
-    //                     'Content-Type': 'multipart/form-data',
-    //                 },
-    //             });
-    //         } else {
-    //             // Crear nuevo empleado
-    //             await axios.post('http://localhost:8000/api/empleados/', formDataToSend, {
-    //                 headers: {
-    //                     'Content-Type': 'multipart/form-data',
-    //                 },
-    //             });
-    //         }
-    //         fetchEmpleados();
-    //         resetForm();
-    //     } catch (error) {
-    //         console.error('Error al guardar empleado:', error);
-    //         if (error.response) {
-    //             console.error('Response data:', error.response.data);
-    //             alert(`Error: ${error.response.data}`);
-    //         }
-    //     }
-    // };
+        try {
+            if (editingEmpleadoId) {
+                // Actualizar empleado
+                await axios.put(`http://localhost:8000/api/empleados/${editingEmpleadoId}/`, formDataToSend, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+            } else {
+                // Crear nuevo empleado
+                await axios.post('http://localhost:8000/api/empleados/', formDataToSend, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+            }
+            fetchEmpleados();
+            resetForm();
+        } catch (error) {
+            console.error('Error al guardar empleado:', error);
+            if (error.response) {
+                console.error('Response data:', error.response.data);
+                alert(`Error: ${error.response.data}`);
+            }
+        }
+    };
 
-    // Eliminar empleado
-    // const deleteEmpleado = async (id) => {
-    //     try {
-    //         await axios.delete(`http://localhost:8000/api/empleados/${id}/`);
-    //         fetchEmpleados();
-    //     } catch (error) {
-    //         console.error('Error al eliminar empleado:', error);
-    //     }
-    // };
+    //Eliminar empleado
+    const deleteEmpleado = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8000/api/empleados/${id}/`);
+            fetchEmpleados();
+        } catch (error) {
+            console.error('Error al eliminar empleado:', error);
+        }
+    };
 
-    // Cargar datos en el formulario para edición
-    // const editEmpleado = (empleado) => {
-    //     setFormData({
-    //         nombre: empleado.nombre,
-    //         apellido_1: empleado.apellido_1,
-    //         apellido_2: empleado.apellido_2,
-    //         email: empleado.email,
-    //         telefono: empleado.telefono,
-    //         puesto: empleado.puesto,
-    //         fecha_contratación: empleado.fecha_contratación,
-    //         cumpleaños: empleado.cumpleaños,
-    //         is_on_leave: empleado.is_on_leave,
-    //         foto: null,
-    //     });
-    //     setEditingEmpleadoId(empleado.id);
-    // };
+    //Cargar datos en el formulario para edición
+    const editEmpleado = (empleado) => {
+        setFormData({
+            nombre: empleado.nombre,
+            apellido_1: empleado.apellido_1,
+            apellido_2: empleado.apellido_2,
+            email: empleado.email,
+            telefono: empleado.telefono,
+            puesto: empleado.puesto,
+            fecha_contratación: empleado.fecha_contratación,
+            cumpleaños: empleado.cumpleaños,
+            is_on_leave: empleado.is_on_leave,
+            foto: null,
+        });
+        setEditingEmpleadoId(empleado.id);
+    };
 
-    // // Reiniciar formulario
-    // const resetForm = () => {
-    //     setFormData({
-    //         nombre: '',
-    //         apellido_1: '',
-    //         apellido_2: '',
-    //         email: '',
-    //         telefono: '',
-    //         puesto: '',
-    //         fecha_contratación: '',
-    //         cumpleaños: '',
-    //         is_on_leave: false,
-    //         foto: null,
-    //     });
-    //     setEditingEmpleadoId(null);
-    // };
+    // Reiniciar formulario
+    const resetForm = () => {
+        setFormData({
+            nombre: '',
+            apellido_1: '',
+            apellido_2: '',
+            email: '',
+            telefono: '',
+            puesto: '',
+            fecha_contratación: '',
+            cumpleaños: '',
+            is_on_leave: false,
+            foto: null,
+        });
+        setEditingEmpleadoId(null);
+    };
 
     return (
         <div>

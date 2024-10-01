@@ -46,7 +46,7 @@ function Inicio() {
           <h1>duacode<span>.</span></h1>
         </header>
         
-        {/* Aquí renderizamos el contenido basado en la ruta */}
+        { /* Aquí renderizamos el contenido basado en la ruta */ }
         <div className="content">
           <Routes>
             <Route path="/inicio" element={<Principal/>} />
