@@ -13,42 +13,191 @@ body, html {
     overflow-x: hidden;
 }
 
-.container {
+/* Encabezado fijo */
+.header {
+    background-color: #61368C;
     display: flex;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;  /* Fijo al hacer scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: margin-left 0.3s ease;
 }
 
-/* Estilo para la barra de búsqueda */
-.search-bar {
+/* Centramos el logo */
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    transition: margin-left 0.3s ease;
+}
+
+/* No mueva el logo con el menú */
+.menu-open .logo {
+    margin-left: auto;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+.logo span {
+    color: #ff009d;
+}
+
+/* Botón de menú hamburguesa */
+.menu-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 35px;
+    height: 30px;
     display: flex;
-    justify-content: center;
-    padding: 20px 0;
-    margin-top: 20px; /* Ajuste del margen superior para evitar superposición con el encabezado */
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1002; /* Asegura que esté encima de todo */
+}
+
+/* Estilos de las líneas del menú */
+.menu-button span {
+    background-color: #fff;
+    height: 4px;
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Transformación del botón en 'X' cuando el menú está abierto */
+.menu-button.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+}
+
+.menu-button.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-button.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px);
+}
+
+/* Sidebar lateral */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Fuera de la vista inicialmente */
+    width: 250px;
+    background-color: #61368c;
+    height: 100vh;
+    padding-top: 60px;
+    transition: left 0.3s ease;
+    color: #fff;
+    z-index: 1001;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 8px;
+    font-size: 18px;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #ff009d;
+}
+
+/* Mostrar el menú lateral cuando está activo */
+.sidebar.active {
+    left: 0;
+}
+
+.main {
+    width: 100%;
+    background-color: #fff;
+    transition: margin-left 0.3s ease;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 900;
+}
+
+.main.active {
+    margin-left: 250px; /* Desplaza el contenido cuando el menú está abierto */
+}
+
+.header.active {
+    margin-left: 0px; /* El header se queda en su lugar */
+}
+
+/* Barra de búsqueda desplegable */
+.search-toggle button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+}
+
+.search-bar {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: none;
 }
 
 .search-bar input {
-    width: 50%;
     padding: 10px;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 20px;
-    border: 2px solid #ccc;
-    text-align: center;
+    border: 1px solid #ccc;
     outline: none;
+    width: 200px;
+}
+
+/* Sección de empleados */
+.employees-section {
+    margin-top: 100px;
+    padding: 20px;
 }
 
 /* Grid de empleados centrado */
 .employees-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     justify-items: center;
     align-items: start;
-    padding: 20px;
     width: 100%;
     max-width: 1200px;
-    box-sizing: border-box;
     margin: 0 auto;
 }
 
@@ -65,7 +214,7 @@ body, html {
     font-style: italic;
     color: #333;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(255, 0, 217, 0.304);
+    box-shadow: 0 4px 6px rgba(255, 0, 217, 0.589);
     transition: background-color 0.3s ease;
 }
 
@@ -77,6 +226,31 @@ body, html {
     margin-bottom: 10px;
 }
 
-.user-icon {
-    font-size: 50px;
+/* Estilo para el botón de cargar más */
+.load-more {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.load-more button {
+    padding: 10px 20px;
+    background-color: #61368C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.load-more button:hover {
+    background-color: #8000ff;
+}
+
+/* Estilo para el spinner de carga */
+.spinner {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #61368C;
 }
