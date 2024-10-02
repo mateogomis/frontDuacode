@@ -10,7 +10,7 @@ body, html {
     width: 100%;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    overflow-x: hidden;
+    overflow: hidden; /* Evitar doble scroll */
 }
 
 /* Encabezado fijo */
@@ -188,7 +188,7 @@ body, html {
     margin-top: 100px;
     padding: 20px;
     overflow-y: auto;  /* Habilitamos scroll en la sección de empleados */
-    height: calc(100vh - 150px);  /* Ajustamos la altura de la sección */
+    height: calc(100vh - 200px);  /* Ajustamos la altura de la sección para dejar espacio */
 }
 
 /* Grid de empleados centrado */
@@ -231,6 +231,7 @@ body, html {
 /* Estilo para el botón de cargar más */
 .load-more {
     margin-top: 20px;
+    margin-bottom: 40px; /* Añadir espacio extra en la parte inferior */
     display: flex;
     justify-content: center;
 }

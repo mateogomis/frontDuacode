@@ -11,6 +11,8 @@ import '../styles/MenuDespl.css';
 import Principal from './Principal';
 import Empleados from './Empleados';
 import Test from './Test';
+import DetalleEmpleados from './DetalleEmpleados.js';
+
 
 function Inicio() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -56,13 +58,14 @@ function Inicio() {
             <Route path="/inicio" element={<Principal/>} />
             <Route path="/empleados" element={<EmpleadoManager />} />
             <Route path="/detalleEmpleado" element={<Empleados />} />
-            <Route path="/proyectos" element={<Proyectos />} />
+            {/* <Route path="/proyectos" element={<Proyectos />} />
             <Route path="/salas" element={<Salas />} />
             <Route path="/organigrama" element={<Organigrama />} />
             <Route path="/protocolo" element={<Protocolo />} />
             <Route path="/multisede" element={<Multisede />} />
             <Route path="/test" element={<Test />} />
-            <Route path="/configuracion" element={<Configuracion />} />
+            <Route path="/configuracion" element={<Configuracion />} /> */}
+            <Route path="/empleados/:id" element={<DetalleEmpleados />} />
           </Routes>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import '../styles/empleados.css';  // Asegúrate de que el CSS está en la ruta correcta
-
+import '../styles/empleados.css'; // Asegúrate de que el CSS está en la ruta correcta
+import { Link } from 'react-router-dom';
 const Empleados = () => {
   const [empleados, setEmpleados] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -102,6 +102,7 @@ const Empleados = () => {
                 />
               )}
               <p>{empleado.nombre} {empleado.apellido_1}</p>
+              <Link to={`/empleados/${empleado.id}`}>Detalle Empleado</Link>
             </div>
           ))}
         </div>
