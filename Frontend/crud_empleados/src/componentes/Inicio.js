@@ -7,7 +7,7 @@ import Multisede from './Multisede';
 import Organigrama from './Organigrama';
 import Protocolo from './Protocolo';
 import Salas from './Salas';
-import '../styles/Menu.css'; // Asegúrate de que este archivo esté correctamente vinculado
+import '../styles/MenuDespl.css'; 
 import Principal from './Principal';
 import Empleados from './Empleados';
 import Test from './Test';
