@@ -10,7 +10,7 @@ const Empleados = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const empleadosPorPagina = 9;
+  const empleadosPorPagina = 10;
 
   // Función que obtiene empleados desde el backend utilizando paginación
   const fetchEmpleados = useCallback(async () => {

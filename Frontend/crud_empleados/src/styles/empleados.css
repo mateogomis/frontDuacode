@@ -187,12 +187,14 @@ body, html {
 .employees-section {
     margin-top: 100px;
     padding: 20px;
+    overflow-y: auto;  /* Habilitamos scroll en la sección de empleados */
+    height: calc(100vh - 150px);  /* Ajustamos la altura de la sección */
 }
 
 /* Grid de empleados centrado */
 .employees-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ajuste dinámico de columnas */
     gap: 30px;
     justify-items: center;
     align-items: start;
