@@ -20,10 +20,18 @@ const Empleados = () => {
         params: { page, limit: empleadosPorPagina },
       });
       const newEmpleados = response.data;
-      console.log(response.data);
 
       if (newEmpleados.length > 0) {
-        setEmpleados((prevEmpleados) => [...prevEmpleados, ...newEmpleados]);
+        // Filtramos los empleados para evitar duplicados
+        const filteredNewEmpleados = newEmpleados.filter(
+          (newEmpleado) => !empleados.some((existingEmpleado) => existingEmpleado.id === newEmpleado.id)
+        );
+
+        // Si hay nuevos empleados sin duplicados, los agregamos a la lista
+        if (filteredNewEmpleados.length > 0) {
+          setEmpleados((prevEmpleados) => [...prevEmpleados, ...filteredNewEmpleados]);
+        }
+
         if (newEmpleados.length < empleadosPorPagina) {
           setHasMore(false);
         }
@@ -35,7 +43,7 @@ const Empleados = () => {
       setHasMore(false);
     }
     setLoading(false);
-  }, [page]);
+  }, [page, empleados]);
 
   useEffect(() => {
     fetchEmpleados();
