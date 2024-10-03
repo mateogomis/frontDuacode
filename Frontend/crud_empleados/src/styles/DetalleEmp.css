@@ -1,5 +1,10 @@
-h1{
-    text-align: center;
+#det{
     text-decoration:underline ;
     margin-bottom: 20px ;
+    line-height: 30px;
+}
+p{
+    text-align: left ;
+    margin-top: 20px;
+    /* line-height: 30px; */
 }

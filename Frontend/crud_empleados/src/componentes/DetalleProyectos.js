@@ -5,9 +5,9 @@ import '../styles/DetalleEmp.css';
 
 
 
-const DetalleEmpleados = () => {
+const DetalleProyectos = () => {
     const { id } = useParams(); // Obtener el ID del empleado de la URL
-    const [empleadoDetail, setEmpleadoDetail] = useState(null); // Cambié el nombre para evitar conflictos
+    const [ProyectoDetail, setProyectoDetail] = useState(null); // Cambié el nombre para evitar conflictos
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -16,7 +16,7 @@ const DetalleEmpleados = () => {
             try {
                 const response = await axios.get(`http://localhost:8000/api/empleados/${id}/`);
                 console.log(response.data);
-                setEmpleadoDetail(response.data); // Cambié el nombre aquí también
+                setProyectoDetail(response.data); // Cambié el nombre aquí también
                 setLoading(false);
             } catch (err) {
                 setError(err);
@@ -33,22 +33,17 @@ const DetalleEmpleados = () => {
     return (
         <div>
             <h1 id="det">Detalles del Empleado</h1>
-            {empleadoDetail && ( // Cambié el nombre aquí
+            {proyectoDetail && ( // Cambié el nombre aquí
                 <div>
-                    <img src={empleadoDetail.foto} alt={`${empleadoDetail.nombre} ${empleadoDetail.apellido_1}`} />
-                    <h2>{empleadoDetail.nombre} {empleadoDetail.apellido_1} {empleadoDetail.apellido_2}</h2>
-                    <p>Email: {empleadoDetail.email}</p>
-                    <p>Teléfono: {empleadoDetail.telefono}</p>
-                    <p>Puesto: {empleadoDetail.puesto}</p>
-                    <p>Fecha de Contratación: {empleadoDetail.fecha_contratación}</p>
-                    <p>Cumpleaños: {empleadoDetail.cumpleaños}</p>
-                    <p>{empleadoDetail.is_on_leave ? 'Está de baja' : 'No está de baja'}</p>
-                </div>
-                
+                    <p>Puesto: {ProyectoDetail.nombre}</p>
+                    <p>{ProyectoDetail.descripcion}</p>
+                    <p>Fecha de Inicio: {ProyectoDetail.fecha_inicio}</p>
+                    <p>Fecha de fin:{ProyectoDetail.fecha_fin ? '{proyectoDetail.fecha_fin}' : 'En curso'}</p>
+                </div> 
             )}
         </div>
     );
 };
 
-export default DetalleEmpleados;
+export default DetalleProyectos;
 
