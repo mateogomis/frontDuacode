@@ -7,6 +7,7 @@ import Multisede from './Multisede';
 import Organigrama from './Organigrama';
 import Protocolo from './Protocolo';
 import Salas from './Salas';
+<<<<<<< HEAD
 import '../styles/inicio.css'; // Asegúrate de que este archivo esté correctamente vinculado
 import Principal from './Principal';
 import Empleados from './Empleados';
@@ -14,6 +15,14 @@ import DetalleEmpleados from './DetalleEmpleados';
 import Sedes from './Sedes';
 import Mapa from './Mapa';
 import Reserva from './Reserva';
+=======
+import '../styles/MenuDespl.css'; 
+import Principal from './Principal';
+import Empleados from './Empleados';
+import Test from './Test';
+import DetalleEmpleados from './DetalleEmpleados.js';
+
+>>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
 
 function Inicio() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -42,6 +51,7 @@ function Inicio() {
           <li><Link to="/organigrama" onClick={toggleMenu}>Organigrama</Link></li>
           <li><Link to="/protocolo" onClick={toggleMenu}>Protocolos</Link></li>
           <li><Link to="/multisede" onClick={toggleMenu}>Multisede</Link></li>
+          <li><Link to="/test" onClick={toggleMenu}>Test</Link></li>
           <li><Link to="/configuracion" onClick={toggleMenu}>Configuración</Link></li>
           <li><Link to="/sedes" onClick={toggleMenu}>sedes</Link></li>
         </ul>
@@ -53,23 +63,29 @@ function Inicio() {
           <h1>duacode<span>.</span></h1>
         </header>
         
-        {/* Aquí renderizamos el contenido basado en la ruta */}
+        { /* Aquí renderizamos el contenido basado en la ruta */ }
         <div className="content">
           <Routes>
             <Route path="/inicio" element={<Principal/>} />
             <Route path="/empleados" element={<EmpleadoManager />} />
             <Route path="/detalleEmpleado" element={<Empleados />} />
-            <Route path="/proyectos" element={<Proyectos />} />
+            {/* <Route path="/proyectos" element={<Proyectos />} />
             <Route path="/salas" element={<Salas />} />
             <Route path="/organigrama" element={<Organigrama />} />
             <Route path="/protocolo" element={<Protocolo />} />
             <Route path="/multisede" element={<Multisede />} />
+<<<<<<< HEAD
             <Route path="/configuracion" element={<Configuracion />} />
             <Route path="/empleados/:id" element={<DetalleEmpleados />} />
             <Route path="/sedes" element={<Sedes />} />
             <Route path="/salas/:sedeId" element={<Salas />} /> {/* Ruta dinámica */}
             <Route path="/mapa" element={<Mapa />} />
             <Route path="/reserva/:salaId" element={<Reserva />} />
+=======
+            <Route path="/test" element={<Test />} />
+            <Route path="/configuracion" element={<Configuracion />} /> */}
+            <Route path="/empleados/:id" element={<DetalleEmpleados />} />
+>>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
           </Routes>
         </div>
       </div>
