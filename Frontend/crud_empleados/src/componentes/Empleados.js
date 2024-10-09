@@ -1,3 +1,4 @@
+// Esta vista es la pagina incial de empleados, aqui seleccionas el empleado que prefieras
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -120,7 +121,6 @@ const Empleados = () => {
                   </svg>
                 </span>
               </Link>
-              <Link to={`/empleados/${empleado.id}`}>Detalle Empleado</Link>
             </div>
           ))}
         </div>
