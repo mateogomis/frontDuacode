@@ -228,6 +228,7 @@ body, html {
     margin-bottom: 10px;
 }
 
+<<<<<<< HEAD
 /* Estilo para el enlace con libro animado */
 .detalle-enlace {
     position: relative;
@@ -256,12 +257,39 @@ body, html {
 }
 
 
+=======
+>>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
 /* Estilo para el botón de cargar más */
 .load-more {
     margin-top: 20px;
     margin-bottom: 40px; /* Añadir espacio extra en la parte inferior */
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
+}
+
+.load-more button {
+    padding: 10px 20px;
+    background-color: #61368C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.load-more button:hover {
+    background-color: #8000ff;
+}
+
+/* Estilo para el spinner de carga */
+.spinner {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #61368C;
+=======
+>>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
 }
 
 .load-more button {
