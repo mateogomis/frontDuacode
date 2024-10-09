@@ -1,0 +1,201 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Header Styling */
+.header {
+    background-color: #61368C;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Centra el logo y lo pinta de blanco */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white; /* Logo en blanco */
+}
+
+.logo span {
+    color: #ff009d; /* El punto rosa al final del logo */
+}
+
+/* Mensaje de cumpleaños */
+.birthday-message {
+    margin-top: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff009d;
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Detalles del Empleado */
+.detalle-empleado-container {
+    text-align: center;
+    margin-top: 0px;
+}
+
+.detalle-empleado-titulo {
+    font-size: 2em;
+    color: #61368C;
+    margin-bottom: 10px;
+}
+
+.detalle-empleado-card {
+    background-color: #8000ff8e;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(255, 0, 217, 0.6);
+    padding: 30px;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detalle-empleado-card:hover {
+    background-color: #8000ff8e;
+    box-shadow: 0px 4px 12px rgba(128, 0, 255, 0.4);
+}
+
+.detalle-empleado-card:hover h2,
+.detalle-empleado-card:hover p {
+    color: white;
+}
+
+.empleado-imagen {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #ff009d;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+p {
+    font-size: 1em;
+    margin: 5px 0;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+p strong {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Layout Adjustments for Responsiveness */
+@media (max-width: 768px) {
+    .detalle-empleado-card {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+/* Contenedor de las imágenes animadas */
+.balloons-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Estilos para las imágenes */
+.balloon-image {
+    position: absolute;
+    bottom: -150px;
+    width: 80px;
+    height: auto; /* Ajusta la altura automáticamente según el ancho */
+    animation: floatAndFade 7s ease-in forwards;
+    opacity: 1;
+}
+
+/* Animación para las imágenes */
+@keyframes floatAndFade {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(20px) translateY(-100px) rotate(15deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(calc(50px - var(--random-x))) translateY(calc(-500px - var(--random-y))) rotate(calc(360deg * var(--random-rotation)));
+        opacity: 0; /* Desvanecimiento gradual */
+    }
+}
+
+/* Ajustes de las imágenes en diferentes posiciones */
+.balloon-image:nth-child(1) {
+    left: 10%;
+    animation-duration: 5s;
+    --random-x: 50px;
+    --random-y: 30px;
+    --random-rotation: 1.2;
+}
+
+.balloon-image:nth-child(2) {
+    left: 30%;
+    animation-duration: 7s;
+    --random-x: -30px;
+    --random-y: 60px;
+    --random-rotation: 0.9;
+}
+
+.balloon-image:nth-child(3) {
+    left: 50%;
+    animation-duration: 6s;
+    --random-x: 80px;
+    --random-y: 40px;
+    --random-rotation: 1.5;
+}
+
+.balloon-image:nth-child(4) {
+    left: 70%;
+    animation-duration: 8s;
+    --random-x: -60px;
+    --random-y: 70px;
+    --random-rotation: 1.1;
+}
+
+.balloon-image:nth-child(5) {
+    left: 90%;
+    animation-duration: 4.5s;
+    --random-x: 40px;
+    --random-y: 50px;
+    --random-rotation: 1.3;
+}

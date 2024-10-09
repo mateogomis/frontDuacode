@@ -1,0 +1,95 @@
+#salas-container {
+  padding: 20px;
+  text-align: center;
+}
+
+#salas-container h1 {
+  font-size: 2.5em;
+  color: #61368C;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Contenedor de las salas en formato horizontal */
+.salas-horizontal {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scroll-behavior: smooth; /* Scroll suave para el contenedor de salas */
+}
+
+/* Estilo de la tarjeta de cada sala */
+.sala-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+  flex: 0 0 auto;
+  width: 300px;
+}
+
+/* Efecto hover para todas las tarjetas, cambia el fondo a morado */
+.sala-card:hover {
+  background-color: #61368C; /* Fondo morado al pasar el mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+  transform: translateY(-5px); /* Elevar la tarjeta */
+  color: #fff; /* Cambiar el color del texto a blanco */
+}
+
+.sala-card h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.sala-card:hover h2,
+.sala-card:hover p {
+  color: #fff; /* Cambiar el color del texto a blanco cuando se pasa el mouse */
+}
+
+.sala-card p {
+  font-size: 1.1em;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Estilo de disponibilidad */
+.disponibilidad-ocupada {
+  color: #ff0000; /* Rojo para "Ocupada" */
+  font-weight: bold;
+}
+
+.disponibilidad-libre {
+  color: #00a000; /* Verde para "Libre" */
+  font-weight: bold;
+}
+
+/* Mensaje de reserva */
+.message {
+  color: #61368C;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* Estilo del botón de reserva */
+.reservar-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #ff009d;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.reservar-btn:hover {
+  background-color: #ff66b3;
+  transform: scale(1.05); /* Aumentar ligeramente el tamaño al pasar el mouse */
+}

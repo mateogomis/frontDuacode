@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import '../styles/empleados.css';  // Asegúrate de que el CSS está en la ruta correcta
 
 const Empleados = () => {
@@ -10,7 +11,7 @@ const Empleados = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const empleadosPorPagina = 9;
+  const empleadosPorPagina = 10;
 
   // Función que obtiene empleados desde el backend utilizando paginación
   const fetchEmpleados = useCallback(async () => {
@@ -21,9 +22,17 @@ const Empleados = () => {
       });
       const newEmpleados = response.data;
       console.log(response.data);
-
       if (newEmpleados.length > 0) {
-        setEmpleados((prevEmpleados) => [...prevEmpleados, ...newEmpleados]);
+        // Filtramos los empleados para evitar duplicados
+        const filteredNewEmpleados = newEmpleados.filter(
+          (newEmpleado) => !empleados.some((existingEmpleado) => existingEmpleado.id === newEmpleado.id)
+        );
+
+        // Si hay nuevos empleados sin duplicados, los agregamos a la lista
+        if (filteredNewEmpleados.length > 0) {
+          setEmpleados((prevEmpleados) => [...prevEmpleados, ...filteredNewEmpleados]);
+        }
+
         if (newEmpleados.length < empleadosPorPagina) {
           setHasMore(false);
         }
@@ -35,7 +44,7 @@ const Empleados = () => {
       setHasMore(false);
     }
     setLoading(false);
-  }, [page]);
+  }, [page, empleados]);
 
   useEffect(() => {
     fetchEmpleados();
@@ -94,6 +103,23 @@ const Empleados = () => {
                 />
               )}
               <p>{empleado.nombre} {empleado.apellido_1}</p>
+              <Link to={`/empleados/${empleado.id}`} className="detalle-enlace">
+              
+                <span className="book-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-journal-text"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
+                  </svg>
+                </span>
+              </Link>
             </div>
           ))}
         </div>

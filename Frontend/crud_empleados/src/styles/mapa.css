@@ -1,0 +1,42 @@
+/* Estilos del contenedor del mapa */
+.mapa-sedes-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.mapa-sedes-container h1 {
+    color: #61368C;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del mapa */
+#map {
+    height: 500px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del botón para alternar entre modo oscuro y claro */
+.toggle-mode-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #61368C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-mode-btn:hover {
+    background-color: #ff009d;
+}
+
+/* Responsividad en pantallas más pequeñas */
+@media (max-width: 768px) {
+    #map {
+        height: 300px;
+    }
+}

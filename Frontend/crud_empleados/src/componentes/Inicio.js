@@ -10,6 +10,10 @@ import Salas from './Salas';
 import '../styles/inicio.css'; // Asegúrate de que este archivo esté correctamente vinculado
 import Principal from './Principal';
 import Empleados from './Empleados';
+import DetalleEmpleados from './DetalleEmpleados';
+import Sedes from './Sedes';
+import Mapa from './Mapa';
+import Reserva from './Reserva';
 
 function Inicio() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -39,6 +43,7 @@ function Inicio() {
           <li><Link to="/protocolo" onClick={toggleMenu}>Protocolos</Link></li>
           <li><Link to="/multisede" onClick={toggleMenu}>Multisede</Link></li>
           <li><Link to="/configuracion" onClick={toggleMenu}>Configuración</Link></li>
+          <li><Link to="/sedes" onClick={toggleMenu}>sedes</Link></li>
         </ul>
       </div>
 
@@ -60,6 +65,11 @@ function Inicio() {
             <Route path="/protocolo" element={<Protocolo />} />
             <Route path="/multisede" element={<Multisede />} />
             <Route path="/configuracion" element={<Configuracion />} />
+            <Route path="/empleados/:id" element={<DetalleEmpleados />} />
+            <Route path="/sedes" element={<Sedes />} />
+            <Route path="/salas/:sedeId" element={<Salas />} /> {/* Ruta dinámica */}
+            <Route path="/mapa" element={<Mapa />} />
+            <Route path="/reserva/:salaId" element={<Reserva />} />
           </Routes>
         </div>
       </div>

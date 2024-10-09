@@ -1,0 +1,190 @@
+/* Barra en movimiento con inclinación y expansión */
+.moving-bar {
+    width: 100vw;
+    height: 80px;
+    overflow: hidden;
+    background-color: #61368C;
+    padding: 10px 0;
+    position: relative;
+    z-index: 1000;
+    transform: rotate(-5deg);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Contenedor del texto y la imagen duplicados */
+.moving-content {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite; /* Animación continua sin cortes */
+}
+
+/* Animación continua sin cortes */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Se desplaza todo el contenido hacia la izquierda y reinicia cuando termina */
+    }
+}
+
+/* Texto en movimiento */
+.moving-text {
+    font-size: 1.5em;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 30px;
+}
+.movingperience {
+    color: #ffffff;
+}
+
+
+/* Personalización de la palabra UXPERIENCE en rosa */
+.moving-text span.uxperience {
+    color: #ff009d;
+}
+
+/* Logo de la empresa en la barra en movimiento */
+.moving-logo {
+    height: 60px;
+    margin-left: 30px;
+}
+
+/* Repetir elementos para que no haya espacios vacíos */
+.moving-item {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+
+  
+/* Tarjetas y estilos de las sedes */
+/* Contenedor principal */
+.sedes-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.sedes {
+    color: #61368C;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Grid de las sedes */
+.sedes-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Tarjeta de las sedes */
+.sede-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+    width: 280px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Hover para las tarjetas */
+.sede-card:hover {
+    background-color: #61368cb6;
+    color: #fff;
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Icono de la sede */
+.sede-icon {
+    color: #61368C;
+    margin-bottom: 10px;
+}
+
+.sede-card:hover .sede-icon {
+    color: #fff; /* Cambiar el color del icono al hacer hover */
+}
+
+/* Estilo para el título y el texto de la tarjeta */
+.sede-card h2 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.sede-card p {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+/* Botón de "Ver Salas Disponibles" */
+.ver-salas-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ff009d;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.ver-salas-btn:hover {
+    background-color: #ff66b3;
+}
+
+/* Footer que ocupa todo el ancho y se mantiene al fondo */
+.footer {
+    background-color: #61368C;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    margin-top: 40px;
+    width: 100%; /* Asegura que ocupe todo el ancho de la ventana */
+    position: fixed; /* Fijo en la parte inferior */
+    bottom: 0;
+    left: 0; /* Asegura que el footer esté alineado a la izquierda */
+    right: 0; /* Asegura que el footer esté alineado a la derecha */
+}
+
+.footer-info {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.footer-info a {
+    color: #ff66b3;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-info a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes de separación y estilo en pantallas pequeñas */
+@media (max-width: 768px) {
+    .sedes-grid {
+        display: block;
+        gap: 20px;
+    }
+
+    .sede-card {
+        margin-bottom: 20px;
+    }
+}

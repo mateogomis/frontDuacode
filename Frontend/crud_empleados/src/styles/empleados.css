@@ -10,7 +10,7 @@ body, html {
     width: 100%;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    overflow-x: hidden;
+    overflow: hidden; /* Evitar doble scroll */
 }
 
 /* Encabezado fijo */
@@ -187,12 +187,14 @@ body, html {
 .employees-section {
     margin-top: 100px;
     padding: 20px;
+    overflow-y: auto;  /* Habilitamos scroll en la sección de empleados */
+    height: calc(100vh - 200px);  /* Ajustamos la altura de la sección para dejar espacio */
 }
 
 /* Grid de empleados centrado */
 .employees-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ajuste dinámico de columnas */
     gap: 30px;
     justify-items: center;
     align-items: start;
@@ -226,9 +228,38 @@ body, html {
     margin-bottom: 10px;
 }
 
+/* Estilo para el enlace con libro animado */
+.detalle-enlace {
+    position: relative;
+    color: #61368C;
+    font-size: 16px;
+    font-style: italic;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.detalle-enlace:hover {
+    color: #ff009d;
+}
+
+/* Icono de libro más grande y animado al hacer hover */
+.book-icon {
+    font-size: 60px; /* Aumentamos el tamaño del icono */
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.detalle-enlace:hover .book-icon {
+    transform: translateX(5px);
+}
+
+
 /* Estilo para el botón de cargar más */
 .load-more {
     margin-top: 20px;
+    margin-bottom: 40px; /* Añadir espacio extra en la parte inferior */
     display: flex;
     justify-content: center;
 }

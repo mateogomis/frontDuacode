@@ -1,0 +1,18 @@
+<h1>Subir archivo</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Subir</button>
+</form>
+
+<h2>Archivos Subidos</h2>
+<ul>
+    {% for file in files %}
+        <li>
+            <strong>Nombre:</strong> {{ file.file.name }}<br>
+            <strong>Descripción:</strong> {{ file.descripcion|default:"Sin descripción" }}<br>
+            <strong>Subido el:</strong> {{ file.uploaded_at }}
+        </li>
+    {% endfor %}
+</ul>
