@@ -86,6 +86,9 @@ function Inicio() {
             <Route path="/configuracion" element={<Configuracion />} /> */}
             <Route path="/empleados/:id" element={<DetalleEmpleados />} />
 >>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
+            <Route path="/test" element={<Test />} />
+            <Route path="/configuracion" element={<Configuracion />} /> 
+            <Route path="/empleados/:id" element={<DetalleEmpleados />} />
           </Routes>
         </div>
       </div>

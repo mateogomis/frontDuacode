@@ -16,11 +16,16 @@ function App() {
     <>
       <Inicio /> {/* El menú siempre estará visible */}
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div className="content-wrapper"> {/* Contenedor para todo el contenido */}
         
 =======
       <div className="content-wrapper"> 
 >>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
+=======
+      <div className="content-wrapper"> {/* Contenedor para todo el contenido */}
+        
+>>>>>>> MateoFront
       </div>
     </>
   );
