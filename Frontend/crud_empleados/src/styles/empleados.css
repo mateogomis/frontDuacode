@@ -228,7 +228,6 @@ body, html {
     margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
 /* Estilo para el enlace con libro animado */
 .detalle-enlace {
     position: relative;
@@ -257,15 +256,12 @@ body, html {
 }
 
 
-=======
->>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
 /* Estilo para el botón de cargar más */
 .load-more {
     margin-top: 20px;
     margin-bottom: 40px; /* Añadir espacio extra en la parte inferior */
     display: flex;
     justify-content: center;
-<<<<<<< HEAD
 }
 
 .load-more button {
@@ -288,8 +284,6 @@ body, html {
     text-align: center;
     font-size: 18px;
     color: #61368C;
-=======
->>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
 }
 
 .load-more button {

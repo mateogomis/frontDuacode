@@ -1,3 +1,4 @@
+// Hola mundo
 import React, { useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 import EmpleadoManager from './EmpleadoManager';
@@ -7,7 +8,6 @@ import Multisede from './Multisede';
 import Organigrama from './Organigrama';
 import Protocolo from './Protocolo';
 import Salas from './Salas';
-<<<<<<< HEAD
 import '../styles/inicio.css'; // Asegúrate de que este archivo esté correctamente vinculado
 import Principal from './Principal';
 import Empleados from './Empleados';
@@ -15,14 +15,6 @@ import DetalleEmpleados from './DetalleEmpleados';
 import Sedes from './Sedes';
 import Mapa from './Mapa';
 import Reserva from './Reserva';
-=======
-import '../styles/MenuDespl.css'; 
-import Principal from './Principal';
-import Empleados from './Empleados';
-import Test from './Test';
-import DetalleEmpleados from './DetalleEmpleados.js';
-
->>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
 
 function Inicio() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -74,18 +66,12 @@ function Inicio() {
             <Route path="/organigrama" element={<Organigrama />} />
             <Route path="/protocolo" element={<Protocolo />} />
             <Route path="/multisede" element={<Multisede />} />
-<<<<<<< HEAD
             <Route path="/configuracion" element={<Configuracion />} />
             <Route path="/empleados/:id" element={<DetalleEmpleados />} />
             <Route path="/sedes" element={<Sedes />} />
             <Route path="/salas/:sedeId" element={<Salas />} /> {/* Ruta dinámica */}
             <Route path="/mapa" element={<Mapa />} />
             <Route path="/reserva/:salaId" element={<Reserva />} />
-=======
-            <Route path="/test" element={<Test />} />
-            <Route path="/configuracion" element={<Configuracion />} /> */}
-            <Route path="/empleados/:id" element={<DetalleEmpleados />} />
->>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
             <Route path="/test" element={<Test />} />
             <Route path="/configuracion" element={<Configuracion />} /> 
             <Route path="/empleados/:id" element={<DetalleEmpleados />} />

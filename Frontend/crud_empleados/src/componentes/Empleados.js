@@ -1,13 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import '../styles/empleados.css';  // Asegúrate de que el CSS está en la ruta correcta
 
-=======
-import '../styles/empleados.css'; // Asegúrate de que el CSS está en la ruta correcta
-import { Link } from 'react-router-dom';
->>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
 const Empleados = () => {
   const [empleados, setEmpleados] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -26,11 +21,7 @@ const Empleados = () => {
         params: { page, limit: empleadosPorPagina },
       });
       const newEmpleados = response.data;
-<<<<<<< HEAD
       console.log(response.data);
-=======
-
->>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
       if (newEmpleados.length > 0) {
         // Filtramos los empleados para evitar duplicados
         const filteredNewEmpleados = newEmpleados.filter(
@@ -112,7 +103,6 @@ const Empleados = () => {
                 />
               )}
               <p>{empleado.nombre} {empleado.apellido_1}</p>
-<<<<<<< HEAD
               <Link to={`/empleados/${empleado.id}`} className="detalle-enlace">
               
                 <span className="book-icon">
@@ -130,9 +120,7 @@ const Empleados = () => {
                   </svg>
                 </span>
               </Link>
-=======
               <Link to={`/empleados/${empleado.id}`}>Detalle Empleado</Link>
->>>>>>> d25a8e820f69686e52b391c61622925ad54aa801
             </div>
           ))}
         </div>
