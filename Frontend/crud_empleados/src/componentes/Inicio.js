@@ -68,6 +68,7 @@ function Inicio() {
             <Route path="/salas/:sedeId" element={<Salas />} /> {/* Ruta dinámica */}
             <Route path="/mapa" element={<Mapa />} />
             <Route path="/reserva/:salaId" element={<Reserva />} />
+
           </Routes>
         </div>
       </div>

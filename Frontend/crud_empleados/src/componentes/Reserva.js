@@ -15,8 +15,9 @@ const Reserva = () => {
     // Función para obtener las reservas de la sala desde la API.
     const fetchReservas = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/sedes/${salaId}/reservas`);
-        setReservas(response.data); // Almacena las reservas obtenidas.
+        const response = await axios.get(`http://localhost:8000/api/sedes/reservas`);
+        setReservas(response.data);
+        console.log('Fetched reservations data:', response.data); // Almacena las reservas obtenidas.
       } catch (error) {
         setError('Error al cargar las reservas'); // Guarda un mensaje de error si falla la solicitud.
       }
