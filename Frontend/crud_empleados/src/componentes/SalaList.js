@@ -15,4 +15,8 @@ const SalaList = ({ salas }) => {
   );
 };
 
+<<<<<<< HEAD
 export default SalaList;
+=======
+export default SalaList;
+>>>>>>> fb3e9cb977d732d409ff8c7e979025f3adcdf10b

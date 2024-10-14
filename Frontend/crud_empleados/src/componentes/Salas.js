@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // Asegúrate de importar useParams
 import axios from 'axios';
 import SalaList from './SalaList';
 import '../styles/salas.css';
+=======
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"; // Asegúrate de importar useParams
+import axios from "axios";
+import SalaList from "./SalaList";
+import "../styles/salas.css";
+>>>>>>> fb3e9cb977d732d409ff8c7e979025f3adcdf10b
 
 const Salas = () => {
   const { sedeId } = useParams(); // Ahora useParams estará correctamente definido
@@ -14,11 +22,13 @@ const Salas = () => {
     const fetchSalas = async () => {
       try {
         console.log(`Fetching salas for sede ID: ${sedeId}`);
-        const response = await axios.get(`http://localhost:8000/api/sedes/salas/?sede_id=${sedeId}`);
-        console.log('Salas fetched:', response.data);
+        const response = await axios.get(
+          `http://localhost:8000/api/sedes/salas/?sede_id=${sedeId}`
+        );
+        console.log("Salas fetched:", response.data);
         setSalas(response.data);
       } catch (err) {
-        console.error('Error fetching salas:', err);
+        console.error("Error fetching salas:", err);
         setError(err.message);
       } finally {
         setLoading(false);

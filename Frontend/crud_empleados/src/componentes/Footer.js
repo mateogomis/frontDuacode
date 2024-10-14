@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // Footer.js
+=======
+>>>>>>> fb3e9cb977d732d409ff8c7e979025f3adcdf10b
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -17,4 +20,8 @@ const Footer = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Footer;
+=======
+export default Footer;
+>>>>>>> fb3e9cb977d732d409ff8c7e979025f3adcdf10b

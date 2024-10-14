@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // SedeCard.js
+=======
+>>>>>>> fb3e9cb977d732d409ff8c7e979025f3adcdf10b
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,4 +24,8 @@ const SedeCard = ({ sede }) => {
   );
 };
 
+<<<<<<< HEAD
 export default SedeCard;
+=======
+export default SedeCard;
+>>>>>>> fb3e9cb977d732d409ff8c7e979025f3adcdf10b
