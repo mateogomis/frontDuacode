@@ -1,10 +1,14 @@
-//Esta es la vista una vez pinchas en un empleado, te muestra sus datos.He cambiado el nombre del fichero 
-import React, { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import '../styles/DetalleEmpleados.css'; 
-import Confetti from 'react-confetti';
-import { useWindowSize } from 'react-use';
+import React, { useState, useEffect, useCallback } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useWindowSize } from "react-use";
+import Header from "./Header";
+import DetalleEmplCarta from "./DetalleEmplCarta";
+import MensajeCumple from "./MensajeCumple";
+import Confettis from "./Confettis";
+import Spinner from "./Spinner";
+import MensajeError from "./MensajeError";
+import "../styles/DetalleEmpleados.css";
 
 const DetalleEmpleados = () => {
   const { id } = useParams();
@@ -16,7 +20,6 @@ const DetalleEmpleados = () => {
   const [showBirthdayMessage, setShowBirthdayMessage] = useState(false);
   const [confettiPieces, setConfettiPieces] = useState(500);
 
-  // Función para verificar si hoy es el cumpleaños del empleado
   const esCumpleaños = useCallback(() => {
     if (!empleadoDetail || !empleadoDetail.cumpleaños) return false;
 
@@ -32,7 +35,9 @@ const DetalleEmpleados = () => {
   useEffect(() => {
     const fetchEmpleado = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/empleados/${id}/`);
+        const response = await axios.get(
+          `http://localhost:8000/api/empleados/${id}/`
+        );
         setEmpleadoDetail(response.data);
         setLoading(false);
       } catch (err) {
@@ -63,55 +68,27 @@ const DetalleEmpleados = () => {
         clearInterval(interval);
       };
     }
-  }, [esCumpleaños]); // Incluye la función memoizada como dependencia
+  }, [esCumpleaños]);
 
-  if (loading) return <div>Cargando...</div>;
-  if (error) return <div>Error al cargar el empleado: {error.message}</div>;
+  if (loading) return <Spinner />;
+  if (error) return <MensajeError error={error.message} />;
 
   return (
     <div className="detalle-empleado-container">
-      <header className="header">
-        <div className="logo">
-          duacode<span>.</span>
-        </div>
-      </header>
+      <Header />
 
-      {showBirthdayMessage && (
-        <h2 className="birthday-message">🎂 ¡Feliz cumpleaños {empleadoDetail.nombre}! 🎂</h2>
-      )}
+      {showBirthdayMessage && <MensajeCumple name={empleadoDetail.nombre} />}
 
       {showConfetti && (
-        <>
-          <Confetti
-            width={width}
-            height={height}
-            numberOfPieces={confettiPieces}
-            gravity={0.2}
-            colors={['#ff009d', '#61368C', '#fff']}
-          />
-          <div className="balloons-container">
-            <img src="/images/file.png" alt="celebration" className="balloon-image" />
-            <img src="/images/file.png" alt="celebration" className="balloon-image" />
-            <img src="/images/file.png" alt="celebration" className="balloon-image" />
-          </div>
-        </>
+        <Confettis
+          width={width}
+          height={height}
+          confettiPieces={confettiPieces}
+        />
       )}
-      
+
       {empleadoDetail && (
-        <div className="detalle-empleado-card">
-          <img
-            src={empleadoDetail.foto}
-            alt={`${empleadoDetail.nombre} ${empleadoDetail.apellido_1}`}
-            className="empleado-imagen"
-          />
-          <h2>{empleadoDetail.nombre} {empleadoDetail.apellido_1} {empleadoDetail.apellido_2}</h2>
-          <p><strong>Email:</strong> {empleadoDetail.email}</p>
-          <p><strong>Teléfono:</strong> {empleadoDetail.telefono}</p>
-          <p><strong>Puesto:</strong> {empleadoDetail.puesto}</p>
-          <p><strong>Fecha de Contratación:</strong> {empleadoDetail.fecha_contratación}</p>
-          <p><strong>Cumpleaños:</strong> {empleadoDetail.cumpleaños}</p>
-          <p><strong>Estado:</strong> {empleadoDetail.is_on_leave ? 'Está de baja' : 'No está de baja'}</p>
-        </div>
+        <DetalleEmplCarta empleadoDetail={empleadoDetail} />
       )}
     </div>
   );

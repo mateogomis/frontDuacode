@@ -14,6 +14,7 @@ import DetalleEmpleados from './DetalleEmpleados';
 import Sedes from './Sedes';
 import Mapa from './Mapa';
 import Reserva from './Reserva';
+import DetalleProyectos from './DetalleProyectos';
 
 function Inicio() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -56,9 +57,10 @@ function Inicio() {
         <div className="content">
           <Routes>
             <Route path="/inicio" element={<Principal/>} />
-           <Route path="/empleados" element={<EmpleadoManager />} /> 
+            <Route path="/empleados" element={<EmpleadoManager />} /> 
             <Route path="/detalleEmpleado" element={<Empleados />} />
             <Route path="/proyectos" element={<Proyectos />} />
+            <Route path="/proyectos/:id" element={<DetalleProyectos />} /> 
             <Route path="/organigrama" element={<Organigrama />} />
             <Route path="/protocolo" element={<Protocolo />} />
             <Route path="/multisede" element={<Multisede />} />
