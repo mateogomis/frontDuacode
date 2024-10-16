@@ -1,10 +1,9 @@
+//Componente principal de vista Reserva 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
 import axios from 'axios';
+import Calendar from './Calendar';
+import ErrorMessage from './ErrorMessage';
 
 const Reserva = () => {
   const { salaId } = useParams(); // Obtiene el ID de la sala desde la URL.
@@ -26,8 +25,8 @@ const Reserva = () => {
     fetchReservas(); // Ejecuta la función al montar el componente.
   }, [salaId]);
 
+  // Función que gestiona la selección de fechas en el calendario
   const handleDateSelect = async (info) => {
-    // Datos de la nueva reserva.
     const reservaData = {
       sala_id: salaId,
       fecha_inicio: info.startStr,
@@ -35,11 +34,9 @@ const Reserva = () => {
     };
 
     try {
-      // Enviar la nueva reserva a la API.
       const response = await axios.post('http://localhost:8000/api/reserva/', reservaData);
       alert('Reserva realizada con éxito');
       
-      // Actualiza el estado de las reservas con la nueva.
       setReservas([...reservas, {
         title: `Reserva - Sala ${salaId}`,
         start: info.startStr,
@@ -53,19 +50,8 @@ const Reserva = () => {
   return (
     <div>
       <h1>Reservar Sala</h1>
-      {error && <p className="error">{error}</p>}
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView="timeGridWeek" // Muestra la vista de la semana con las horas.
-        selectable={true} // Permite seleccionar un rango de fechas.
-        events={reservas} // Muestra las reservas en el calendario.
-        select={handleDateSelect} // Llama a la función cuando el usuario selecciona un rango de fechas.
-        headerToolbar={{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        }}
-      />
+      {error && <ErrorMessage message={error} />}
+      <Calendar reservas={reservas} handleDateSelect={handleDateSelect} />
     </div>
   );
 };

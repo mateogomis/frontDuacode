@@ -1,0 +1,67 @@
+/* carrusel.css */
+.carrusel-container {
+    position: relative;
+    width: 300px; /* Ancho ajustado al tamaño de las tarjetas */
+    margin: 0 auto;
+}
+
+.carrusel {
+    display: flex;
+    overflow: hidden; /* Ocultar las tarjetas fuera del área visible */
+    scroll-behavior: smooth;
+}
+
+.sala-card {
+    flex: 0 0 100%; /* Cada tarjeta ocupa el 100% del ancho del carrusel */
+    margin: 0 10px; /* Espacio entre tarjetas */
+}
+
+.carrusel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo más ligero y transparente */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px; /* Tamaño reducido para flechas más discretas */
+    padding: 10px;
+    z-index: 10;
+    border-radius: 50%; /* Bordes redondeados para un estilo más moderno */
+    transition: background-color 0.3s ease;
+}
+
+.carrusel-button.left {
+    left: -40px; /* Coloca la flecha fuera del contenido principal */
+}
+
+.carrusel-button.right {
+    right: -40px; /* Coloca la flecha fuera del contenido principal */
+}
+
+.carrusel-button:hover {
+    background-color: rgba(0, 0, 0, 0.6); /* Color más oscuro al pasar el mouse */
+}
+
+.carrusel-button:focus {
+    outline: none;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .carrusel-container {
+        width: 100%; /* Usar todo el ancho disponible en móviles */
+    }
+
+    .carrusel-button.left {
+        left: 10px; /* Ajustar la posición de las flechas */
+    }
+
+    .carrusel-button.right {
+        right: 10px;
+    }
+
+    .sala-card {
+        margin: 0 5px; /* Reducir los márgenes en pantallas pequeñas */
+    }
+}

@@ -1,0 +1,92 @@
+/* Contenedor principal de la configuración */
+.configuracion-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh; /* Asegura que el contenedor ocupe al menos el 100% de la altura visible */
+    overflow-y: auto; /* Habilita el scroll si el contenido sobrepasa la ventana */
+}
+
+/* Título de la página */
+.configuracion-container h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #61368C;
+    margin-bottom: 40px;
+}
+
+/* Distribuye las secciones en 2 columnas */
+.configuracion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* Estilo para cada sección (perfil, preferencias, seguridad, sesiones activas) */
+.config-section {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.config-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.8em;
+}
+
+/* Inputs y select */
+.config-section input,
+.config-section select {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botones */
+.config-section button {
+    background-color: #ff009d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.config-section button:hover {
+    background-color: #ff66b3;
+}
+
+.sesiones-activas {
+    list-style: none;
+    padding: 0;
+}
+
+.sesiones-activas li {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .configuracion-grid {
+        grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
+    }
+
+    .config-section {
+        margin-bottom: 30px;
+    }
+}
+
+/* Espacio adicional al final para evitar solapamiento con el footer */
+.configuracion-container {
+    margin-bottom: 100px;
+}

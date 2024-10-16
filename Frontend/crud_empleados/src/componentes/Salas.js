@@ -34,7 +34,7 @@ const Salas = () => {
 
   return (
     <div id="salas-container">
-      <h1>Salas Disponibles en Sede {sedeId}</h1>
+      <h1>Elige tu sala en Sede {sedeId}</h1>
       <SalaList salas={salas} />
     </div>
   );

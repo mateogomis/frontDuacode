@@ -6,11 +6,12 @@
     background-color: #61368C;
     padding: 10px 0;
     position: relative;
-    z-index: 1000;
+    z-index: 1000; /* Mantener en 1000 para que esté sobre el contenido */
     transform: rotate(-5deg);
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin-bottom: 50px; /* Espacio bajo la barra */
 }
 
 /* Contenedor del texto y la imagen duplicados */
@@ -40,10 +41,10 @@
     display: inline-block;
     margin-right: 30px;
 }
+
 .movingperience {
     color: #ffffff;
 }
-
 
 /* Personalización de la palabra UXPERIENCE en rosa */
 .moving-text span.uxperience {
@@ -63,18 +64,12 @@
     margin-right: 50px;
 }
 
-  
-/* Tarjetas y estilos de las sedes */
 /* Contenedor principal */
 .sedes-container {
     text-align: center;
     padding: 20px;
-}
-
-.sedes {
-    color: #61368C;
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    margin-top: 120px; /* Añadir margen superior para evitar el solapamiento con la MovingBar */
+    margin-bottom: 250px; /* Espacio adicional antes del footer para evitar solapamiento */
 }
 
 /* Grid de las sedes */
@@ -149,7 +144,6 @@
     padding: 20px;
     color: white;
     text-align: center;
-    margin-top: 40px;
     width: 100%; /* Asegura que ocupe todo el ancho de la ventana */
     position: fixed; /* Fijo en la parte inferior */
     bottom: 0;
@@ -157,9 +151,14 @@
     right: 0; /* Asegura que el footer esté alineado a la derecha */
 }
 
+/* Footer Info centrado */
 .footer-info {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex; /* Usar Flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    flex-wrap: wrap; /* Para asegurar que los elementos dentro no se solapen en pantallas pequeñas */
 }
 
 .footer-info p {
