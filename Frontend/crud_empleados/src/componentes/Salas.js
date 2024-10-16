@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // Asegúrate de importar useParams
 import axios from 'axios';
 import SalaList from './SalaList';
 import '../styles/salas.css';
-=======
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Asegúrate de importar useParams
-import axios from "axios";
-import SalaList from "./SalaList";
-import "../styles/salas.css";
->>>>>>> fb3e9cb977d732d409ff8c7e979025f3adcdf10b
 
 const Salas = () => {
   const { sedeId } = useParams(); // Ahora useParams estará correctamente definido
@@ -42,7 +34,7 @@ const Salas = () => {
 
   return (
     <div id="salas-container">
-      <h1>Salas Disponibles en Sede {sedeId}</h1>
+      <h1>Elige tu sala en Sede {sedeId}</h1>
       <SalaList salas={salas} />
     </div>
   );

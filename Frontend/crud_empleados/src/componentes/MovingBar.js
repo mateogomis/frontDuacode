@@ -36,8 +36,4 @@ const MovingBar = () => {
   );
 };
 
-<<<<<<< HEAD
 export default MovingBar;
-=======
-export default MovingBar;
->>>>>>> fb3e9cb977d732d409ff8c7e979025f3adcdf10b
