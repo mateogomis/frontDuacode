@@ -1,0 +1,35 @@
+/* Navigation.css */
+.navigation-container {
+    display: flex;
+    justify-content: space-around;
+    /* Espacio igual entre los botones */
+    padding: 20px;
+    background-color: #f4f4f4;
+    /* Fondo gris claro */
+    border-radius: 8px;
+    /* Bordes redondeados */
+}
+
+.nav-button {
+    padding: 10px 20px;
+    /* Espaciado interno */
+    font-size: 16px;
+    /* Tamaño de fuente */
+    border: none;
+    /* Sin borde */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    background-color: #007bff;
+    /* Color azul */
+    color: white;
+    /* Color del texto */
+    cursor: pointer;
+    /* Cursor en forma de mano */
+    transition: background-color 0.3s;
+    /* Transición suave para el fondo */
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+    /* Color más oscuro al pasar el mouse */
+}

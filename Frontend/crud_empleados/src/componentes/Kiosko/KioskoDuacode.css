@@ -1,0 +1,64 @@
+/* Quitar las barras de desplazamiento */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    /* Evitar scroll */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+    height: calc(100vh - 30px);
+    /* Ajuste para reducir espacio */
+    gap: 10px;
+    /* Espacio entre las secciones */
+}
+
+
+
+/* Secciones grandes de abajo */
+.section.large {
+    width: calc(50% - 10px);
+    /* Ocupa el 50% del ancho */
+    height: calc(50% - 15px);
+    /* Ocupa el 50% de la altura, ajustando el gap */
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    /* Bordes redondeados */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.2s;
+    /* Transición suave */
+}
+
+/* Efecto hover para las secciones */
+/* .section:hover {
+    transform: scale(1.01);
+    /* Escala ligeramente las secciones */
+
+
+/* Footer */
+footer {
+    width: calc(100% - 20px);
+    /* Mismo padding lateral que las secciones */
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    /* Mismo espacio a la izquierda que el gap entre las secciones */
+    box-sizing: border-box;
+    border-radius: 10px;
+    /* Bordes redondeados también para el footer */
+}
