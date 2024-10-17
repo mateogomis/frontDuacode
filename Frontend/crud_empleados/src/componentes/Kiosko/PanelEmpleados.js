@@ -9,7 +9,6 @@ const PanelEmpleados = () => {
     apellido_2: '', 
     email: '', 
     telefono: '', 
-    puesto: '',
     fecha_contratacion: '', 
     cumpleaños: '', 
     is_on_leave: false, 

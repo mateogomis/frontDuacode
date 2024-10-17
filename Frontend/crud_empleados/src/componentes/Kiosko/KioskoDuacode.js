@@ -10,7 +10,7 @@ import Login from './Login';
 import Navigation from './Navigation';
 
 const KioskoDuacode = () => {
-  const { data: empleado, error: empleadoError } = useFetchData('http://localhost:8000/api/empleados/1/');
+  const { data: empleado, error: empleadoError } = useFetchData('http://localhost:8000/api/empleados/20/');
   const { data: proyecto, error: proyectoError } = useFetchData('http://localhost:8000/api/proyectos/1/');
   const { data: sedes, error: sedesError } = useFetchData('http://localhost:8000/api/sedes/sedes/'); 
 
