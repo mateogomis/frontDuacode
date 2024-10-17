@@ -40,7 +40,7 @@ const Empleados = () => {
     fetchEmpleados();
   }, [fetchEmpleados]);
 
-  const cargarMasEmpleados = () =>
+  const cargarMas = () =>
     !loading && hasMore && setPage((prev) => prev + 1);
 
   const filteredEmpleados = empleados.filter(({ nombre, apellido_1 }) =>
@@ -64,7 +64,7 @@ const Empleados = () => {
         />
 
         {hasMore && !loading && (
-          <LoadMoreButton cargarMasEmpleados={cargarMasEmpleados} />
+          <LoadMoreButton cargarMas={cargarMas} />
         )}
 
         {loading && <Spinner />}

@@ -1,0 +1,32 @@
+#det {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+text-decoration: underline;
+}
+
+.detalle-proyecto-box {
+    background-color: #e9e9e9;
+    border: 1px solid #c0baba;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-proyecto-box p {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 10px;
+
+}
+
+.detalle-proyecto-box p strong {
+    color: #000;
+}
+
+.detalle-proyecto-box p:last-child {
+    margin-bottom: 0;
+}

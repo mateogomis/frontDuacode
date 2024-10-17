@@ -1,309 +1,262 @@
-/* Reset and basic styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body, html {
-    height: 100%;
-    width: 100%;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    overflow: hidden; /* Evitar doble scroll */
+body,
+html {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  overflow: hidden;
 }
 
-/* Encabezado fijo */
 .header {
-    background-color: #61368C;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    position: fixed;  /* Fijo al hacer scroll */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    transition: margin-left 0.3s ease;
+  background-color: #61368c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: margin-left 0.3s ease;
 }
 
-/* Centramos el logo */
 .logo {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    transition: margin-left 0.3s ease;
-}
-
-/* No mueva el logo con el menú */
-.menu-open .logo {
-    margin-left: auto;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  transition: margin-left 0.3s ease;
 }
 
 .logo h1 {
-    margin: 0;
+  margin: 0;
 }
 
 .logo span {
-    color: #ff009d;
+  color: #ff009d;
 }
 
-/* Botón de menú hamburguesa */
 .menu-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 35px;
-    height: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    z-index: 1002; /* Asegura que esté encima de todo */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 35px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1002;
 }
 
-/* Estilos de las líneas del menú */
 .menu-button span {
-    background-color: #fff;
-    height: 4px;
-    width: 100%;
-    display: block;
-    border-radius: 5px;
-    transition: 0.3s;
+  background-color: #fff;
+  height: 4px;
+  width: 100%;
+  display: block;
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
-/* Transformación del botón en 'X' cuando el menú está abierto */
 .menu-button.active span:nth-child(1) {
-    transform: rotate(45deg) translateY(10px);
+  transform: rotate(45deg) translateY(10px);
 }
 
 .menu-button.active span:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .menu-button.active span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-10px);
+  transform: rotate(-45deg) translateY(-10px);
 }
 
-/* Sidebar lateral */
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px; /* Fuera de la vista inicialmente */
-    width: 250px;
-    background-color: #61368c;
-    height: 100vh;
-    padding-top: 60px;
-    transition: left 0.3s ease;
-    color: #fff;
-    z-index: 1001;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  background-color: #61368c;
+  height: 100vh;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  color: #fff;
+  z-index: 1001;
 }
 
 .sidebar ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .sidebar ul li {
-    margin: 10px 0;
-    cursor: pointer;
-    padding: 5px;
+  margin: 10px 0;
+  cursor: pointer;
+  padding: 5px;
 }
 
 .sidebar ul li a {
-    text-decoration: none;
-    color: #fff;
-    display: block;
-    padding: 8px;
-    font-size: 18px;
-    font-style: italic;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px;
+  font-size: 18px;
+  font-style: italic;
+  transition: color 0.3s ease;
 }
 
 .sidebar ul li a:hover {
-    color: #ff009d;
+  color: #ff009d;
 }
 
-/* Mostrar el menú lateral cuando está activo */
 .sidebar.active {
-    left: 0;
+  left: 0;
 }
 
 .main {
-    width: 100%;
-    background-color: #fff;
-    transition: margin-left 0.3s ease;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 900;
+  width: 100%;
+  background-color: #fff;
+  transition: margin-left 0.3s ease;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 900;
 }
 
 .main.active {
-    margin-left: 250px; /* Desplaza el contenido cuando el menú está abierto */
+  margin-left: 250px;
 }
 
 .header.active {
-    margin-left: 0px; /* El header se queda en su lugar */
+  margin-left: 0;
 }
 
-/* Barra de búsqueda desplegable */
 .search-toggle button {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 24px;
-    position: absolute;
-    right: 20px;
-    top: 25px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  right: 20px;
+  top: 25px;
 }
 
 .search-bar {
-    position: absolute;
-    top: 40px;
-    right: 20px;
-    background-color: transparent;
-    padding: 10px;
-    border-radius: 20px;
-    box-shadow: none;
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: none;
 }
 
 .search-bar input {
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    outline: none;
-    width: 200px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 200px;
 }
 
-/* Sección de empleados */
 .employees-section {
-    margin-top: 100px;
-    padding: 20px;
-    overflow-y: auto;  /* Habilitamos scroll en la sección de empleados */
-    height: calc(100vh - 200px);  /* Ajustamos la altura de la sección para dejar espacio */
+  margin-top: 100px;
+  padding: 20px;
+  overflow-y: auto;
+  height: calc(100vh - 200px);
 }
 
-/* Grid de empleados centrado */
 .employees-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ajuste dinámico de columnas */
-    gap: 30px;
-    justify-items: center;
-    align-items: start;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .employee-card {
-    background-color: #fff;
-    padding: 20px;
-    width: 180px;
-    height: 220px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-style: italic;
-    color: #333;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(255, 0, 217, 0.589);
-    transition: background-color 0.3s ease;
+  background-color: #fff;
+  padding: 20px;
+  width: 180px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  font-style: italic;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(255, 0, 217, 0.589);
+  transition: background-color 0.3s ease;
 }
 
 .employee-card:hover {
-    background-color: #8000ff52;
+  background-color: #8000ff52;
 }
 
 .employee-card img {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-/* Estilo para el enlace con libro animado */
 .detalle-enlace {
-    position: relative;
-    color: #61368C;
-    font-size: 16px;
-    font-style: italic;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
+  position: relative;
+  color: #61368c;
+  font-size: 16px;
+  font-style: italic;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s ease;
 }
 
 .detalle-enlace:hover {
-    color: #ff009d;
+  color: #ff009d;
 }
 
-/* Icono de libro más grande y animado al hacer hover */
 .book-icon {
-    font-size: 60px; /* Aumentamos el tamaño del icono */
-    margin-left: 8px;
-    transition: transform 0.3s ease;
+  font-size: 60px;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
 }
 
 .detalle-enlace:hover .book-icon {
-    transform: translateX(5px);
+  transform: translateX(5px);
 }
 
-
-/* Estilo para el botón de cargar más */
 .load-more {
-    margin-top: 20px;
-    margin-bottom: 40px; /* Añadir espacio extra en la parte inferior */
-    display: flex;
-    justify-content: center;
+  margin: 20px 0 40px;
+  display: flex;
+  justify-content: center;
 }
 
 .load-more button {
-    padding: 10px 20px;
-    background-color: #61368C;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  background-color: #61368c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .load-more button:hover {
-    background-color: #8000ff;
+  background-color: #8000ff;
 }
 
-/* Estilo para el spinner de carga */
 .spinner {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 18px;
-    color: #61368C;
-}
-
-.load-more button {
-    padding: 10px 20px;
-    background-color: #61368C;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.load-more button:hover {
-    background-color: #8000ff;
-}
-
-/* Estilo para el spinner de carga */
-.spinner {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 18px;
-    color: #61368C;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #61368c;
 }

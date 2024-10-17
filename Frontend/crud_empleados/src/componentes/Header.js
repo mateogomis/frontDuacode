@@ -27,7 +27,7 @@ const Header = ({ menuOpen, setMenuOpen, searchVisible, setSearchVisible, search
         <div className="search-bar">
           <input
             type="text"
-            placeholder="Buscar empleado..."
+            placeholder="Buscar..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
