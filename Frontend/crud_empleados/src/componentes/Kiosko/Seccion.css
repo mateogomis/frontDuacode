@@ -1,0 +1,20 @@
+.section {
+    width: calc(25% - 10px);
+    /* Ocupa el 25% del ancho */
+    height: calc(50% - 15px);
+    /* Ocupa el 50% de la altura, ajustando el gap */
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    /* Bordes redondeados */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.2s;
+    /* Transición suave */
+}
+
+.section:hover {
+    transform: scale(1.02);
+    /* Escala ligeramente las secciones */
+}

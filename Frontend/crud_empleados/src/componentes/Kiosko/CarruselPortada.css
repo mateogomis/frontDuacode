@@ -1,0 +1,68 @@
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 400px;
+    /* Altura del carrusel */
+    margin-top: 20px;
+    overflow: hidden;
+    /* Evitar que las imágenes sobresalgan del contenedor */
+    border-radius: 10px;
+    /* Bordes redondeados para el contenedor del carrusel */
+}
+
+.image-container {
+    flex: 1;
+    /* Hace que el contenedor de la imagen ocupe todo el espacio disponible */
+    display: flex;
+    /* Usa flexbox para centrar la imagen */
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    height: 100%;
+    /* Asegura que el contenedor tenga la altura completa del carrusel */
+}
+
+.carousel-image {
+    width: 300px;
+    /* Establecer un ancho fijo para todas las imágenes */
+    height: 200px;
+    /* Establecer una altura fija para todas las imágenes */
+    object-fit: cover;
+    /* Escala la imagen para que llene el contenedor sin distorsionarse */
+    border-radius: 10px;
+    /* Bordes redondeados para la imagen */
+}
+
+.carousel-button {
+    background-color: #007bff;
+    /* Color de fondo para los botones */
+    color: white;
+    /* Color del texto */
+    border: none;
+    border-radius: 5px;
+    /* Bordes redondeados para los botones */
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.carousel-button:hover {
+    background-color: #0056b3;
+    /* Color más oscuro en hover */
+}
+
+.carousel-button:first-child {
+    left: 10px;
+    /* Posición del botón izquierdo */
+}
+
+.carousel-button:last-child {
+    right: 10px;
+    /* Posición del botón derecho */
+}
