@@ -127,7 +127,7 @@ const LectorQr = () => {
       </div>
 
       <div className="video-container">
-        <video id="preview" ref={videoRef} width="340" height="300"></video>
+        <video id="preview" ref={videoRef} width="340" height="270"></video>
       </div>
 
       {welcomeMessage && <button onClick={handleLogout}>Cerrar Sesión</button>}

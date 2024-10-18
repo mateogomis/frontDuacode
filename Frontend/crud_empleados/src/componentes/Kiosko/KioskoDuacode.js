@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './KioskoDuacode.css';
 import Seccion from './Seccion'; 
 import CarruselPortada from './CarruselPortada'; 
@@ -9,6 +9,7 @@ import Sede from './Sede';
 import Login from './Login';
 import Navigation from './Navigation';
 import LectorQr from './LectorQr'
+import Perfil from './Perfil'; // Import the Perfil component
 
 const KioskoDuacode = () => {
   const { data: empleado, error: empleadoError } = useFetchData('http://localhost:8000/api/empleados/20/');
@@ -16,7 +17,8 @@ const KioskoDuacode = () => {
   const { data: sedes, error: sedesError } = useFetchData('http://localhost:8000/api/sedes/sedes/'); 
 
   const primeraSede = sedes && sedes.length > 0 ? sedes[0] : null;
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [employeeId, setEmployeeId] = useState(null);
   return (
     <div className="container">
       {empleadoError && <p>Error al cargar el empleado: {empleadoError.message}</p>}
@@ -36,7 +38,11 @@ const KioskoDuacode = () => {
         <CarruselPortada />
       </div>
       <div className="section large">
-        <LectorQr />
+              {isAuthenticated ? (
+        <Perfil id={employeeId} /> // Show Perfil component if authenticated
+      ) : (
+        <LectorQr setIsAuthenticated={setIsAuthenticated} setEmployeeId={setEmployeeId} /> // Show LectorQr if not authenticated
+      )}
       </div>
       <footer>Footer</footer>
     </div>
