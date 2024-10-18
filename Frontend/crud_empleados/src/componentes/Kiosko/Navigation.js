@@ -1,7 +1,6 @@
 // Navigation.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const Navigation = () => {
   return (
     <div>
@@ -17,7 +16,9 @@ const Navigation = () => {
       <Link to="/salas" className="nav-button">
         Salas
       </Link>
+      
     </div>
+    
   );
 };
 

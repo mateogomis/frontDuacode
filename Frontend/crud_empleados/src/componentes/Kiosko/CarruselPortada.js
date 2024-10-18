@@ -1,30 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CarruselPortada.css'; // Asegúrate de tener este archivo para los estilos
+import useFetchData from './scripts/useFetchData'; // Importa el hook personalizado
 
 const CarruselPortada = () => {
-  const [rooms, setRooms] = useState([]); // Cambia el estado para almacenar información de las salas
+  const { data: rooms, error, setData } = useFetchData('http://localhost:8000/api/sedes/salas/'); // Usa el hook para obtener las salas
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Función para obtener las imágenes del backend
-  const fetchRooms = async () => {
-    try {
-      const response = await fetch('http://localhost:8000/api/sedes/salas/'); // Cambia la URL si es necesario
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      console.log('Data fetched:', data); // Cambiado a 'data' en lugar de 'response.data'
-
-      // Establecer las salas en el estado
-      setRooms(data);
-    } catch (error) {
-      console.error('Error fetching rooms:', error);
-    }
-  };
-
   useEffect(() => {
-    fetchRooms();
-  }, []);
+    if (rooms && rooms.length > 0) {
+      setCurrentIndex(0); // Reinicia el índice cuando los datos se cargan correctamente
+    }
+  }, [rooms]);
 
   const nextRoom = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % rooms.length);
@@ -34,13 +20,17 @@ const CarruselPortada = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + rooms.length) % rooms.length);
   };
 
+  if (error) {
+    return <p>Error al cargar las salas: {error.message}</p>;
+  }
+
   return (
     <div className="carousel">
       <button className="carousel-button" onClick={prevRoom}>
         &#10094; {/* Flecha izquierda */}
       </button>
 
-      {rooms.length > 0 && (
+      {rooms && rooms.length > 0 ? (
         <div className="image-container">
           <img
             src={`http://localhost:8000${rooms[currentIndex].imagen_url}`} // Mostrar la imagen
@@ -54,6 +44,8 @@ const CarruselPortada = () => {
             <p>Dirección: {rooms[currentIndex].sede.direccion}</p> {/* Dirección */}
           </div>
         </div>
+      ) : (
+        <p>Cargando salas...</p>
       )}
 
       <button className="carousel-button" onClick={nextRoom}>

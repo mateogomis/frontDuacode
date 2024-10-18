@@ -8,6 +8,7 @@ import Proyecto from './Proyecto';
 import Sede from './Sede'; 
 import Login from './Login';
 import Navigation from './Navigation';
+import LectorQr from './LectorQr'
 
 const KioskoDuacode = () => {
   const { data: empleado, error: empleadoError } = useFetchData('http://localhost:8000/api/empleados/20/');
@@ -30,12 +31,12 @@ const KioskoDuacode = () => {
       {primeraSede && (
         <Seccion title="Sede Principal" items={[primeraSede]} renderItem={(s) => <Sede sede={s} />} />
       )}
-      <Seccion title="Inicio de Sesión" items={[]} renderItem={() => <Login />} />
+      <Seccion title="Navegacion" items={[]} renderItem={() => <Navigation />} />
       <div className="section large">
         <CarruselPortada />
       </div>
       <div className="section large">
-        <Navigation />
+        <LectorQr />
       </div>
       <footer>Footer</footer>
     </div>

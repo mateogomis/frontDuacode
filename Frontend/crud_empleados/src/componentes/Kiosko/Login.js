@@ -14,7 +14,6 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
@@ -35,7 +34,10 @@ const Login = () => {
           />
         </div>
         <button type="submit">Iniciar Sesión</button>
+
       </form>
+
+      
     </div>
   );
 };

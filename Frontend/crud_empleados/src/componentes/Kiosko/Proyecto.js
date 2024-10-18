@@ -1,5 +1,5 @@
 import React from 'react';
-import FileUpload from './scripts/FileUpload';
+import FileUpload from './FileUpload';
 const Proyecto = ({ proyecto }) => {
   return (
     <div>
