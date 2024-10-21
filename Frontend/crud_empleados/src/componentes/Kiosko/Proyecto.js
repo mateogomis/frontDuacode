@@ -3,7 +3,7 @@ import FileUpload from './FileUpload';
 const Proyecto = ({ proyecto }) => {
   return (
     <div>
-      <p>Título: {proyecto.titulo}</p>
+      <p>Título: {proyecto.nombre}</p>
       <p>Descripción: {proyecto.descripcion}</p>
       {/* Agrega más campos según sea necesario */}
       <FileUpload />

@@ -6,13 +6,13 @@ const Navigation = () => {
     <div>
       <Link to="/empleados" className="nav-button">
         Empleados
-      </Link>
+      </Link><br/>
       <Link to="/proyectos" className="nav-button">
         Proyectos
-      </Link>
+      </Link><br/>
       <Link to="/sedes" className="nav-button">
         Sedes
-      </Link>
+      </Link><br/>
       <Link to="/salas" className="nav-button">
         Salas
       </Link>

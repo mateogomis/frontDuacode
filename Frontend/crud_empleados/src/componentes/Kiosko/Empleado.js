@@ -9,7 +9,7 @@ const Empleado = ({ empleado }) => {
       className="empleado-foto" // Añade una clase para estilos
     />
     <p>Nombre: {empleado.nombre}</p>
-    <p>Puesto: {empleado.puesto}</p>
+    <p>Puesto: {empleado.rol.nombre}</p>
     {/* Agrega más campos según sea necesario */}
   </div>
   );
