@@ -1,16 +1,7 @@
 
 
 import React from "react";
-import { Routes, Route } from "react-router-dom";
 import Inicio from "./componentes/Inicio";
-import Empleados from "./componentes/Empleados";
-import Proyectos from "./componentes/Proyectos";
-import Configuracion from "./componentes/Configuracion";
-import Multisede from "./componentes/Multisede";
-import Organigrama from "./componentes/Organigrama/Organigrama";
-import Protocolo from "./componentes/Protocolo";
-import Salas from "./componentes/Salas";
-import EmpleadoManager from "./componentes/EmpleadoManager";
 import Principal from "./componentes/Principal";
 
 function App() {

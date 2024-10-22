@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import EmpleadoManager from './EmpleadoManager';
-import Proyectos from './Proyectos';
+import EmpleadoManager from './Empleados/EmpleadoManager';
+import Proyectos from './Proyectos/Proyectos';
 import Configuracion from './Configuracion';
 import Multisede from './Multisede';
 import Organigrama from './Organigrama/Organigrama';
 import Protocolo from './Protocolos/Protocolos';
-import Salas from './Salas';
+import Salas from './Salas/Salas';
 import '../styles/inicio.css'; // Asegúrate de que este archivo esté correctamente vinculado
 import Principal from './Principal';
-import Empleados from './Empleados';
-import DetalleEmpleados from './DetalleEmpleados';
-import Sedes from './Sedes';
+import Empleados from './Empleados/Empleados';
+import DetalleEmpleados from './Empleados/DetalleEmpleados';
+import Sedes from './Sedes/Sedes';
 import Mapa from './Mapa';
 import Reserva from './Reserva';
-import DetalleProyectos from './DetalleProyectos';
+import DetalleProyectos from './Proyectos/DetalleProyectos';
 
 function Inicio() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -36,12 +36,12 @@ function Inicio() {
       <div className={`sidebar ${isSidebarOpen ? 'active' : ''}`}>
         <ul>
           <li><Link to="/inicio" onClick={toggleMenu}>Inicio</Link></li>
-          <li><Link to="/empleados" onClick={toggleMenu}>Empleados</Link></li>
+          <li><Link to="Empleados/empleados" onClick={toggleMenu}>Empleados</Link></li>
           <li><Link to="/detalleEmpleado" onClick={toggleMenu}>detalleEmpleado</Link></li>
           <li><Link to="/sedes" onClick={toggleMenu}>Salas</Link></li>
-          <li><Link to="/proyectos" onClick={toggleMenu}>Proyectos</Link></li>
+          <li><Link to="/Proyectos/proyectos" onClick={toggleMenu}>Proyectos</Link></li>
           <li><Link to="/organigrama" onClick={toggleMenu}>Organigrama</Link></li>
-          <li><Link to="/protocolo" onClick={toggleMenu}>Protocolos</Link></li>
+          <li><Link to="/Protocolos/protocolos" onClick={toggleMenu}>Protocolos</Link></li>
           {/* <li><Link to="/multisede" onClick={toggleMenu}>Multisede</Link></li> */}
           <li><Link to="/configuracion" onClick={toggleMenu}>Configuración</Link></li>
         </ul>
@@ -57,12 +57,12 @@ function Inicio() {
         <div className="content">
           <Routes>
             <Route path="/inicio" element={<Principal/>} />
-            <Route path="/empleados" element={<EmpleadoManager />} /> 
+            <Route path="/Empleados/empleados" element={<EmpleadoManager />} /> 
             <Route path="/detalleEmpleado" element={<Empleados />} />
-            <Route path="/proyectos" element={<Proyectos />} />
+            <Route path="/Proyectos/proyectos" element={<Proyectos />} />
             <Route path="/proyectos/:id" element={<DetalleProyectos />} /> 
             <Route path="/organigrama" element={<Organigrama />} />
-            <Route path="/protocolo" element={<Protocolo />} />
+            <Route path="/Protocolos/Protocolos" element={<Protocolo />} />
             <Route path="/multisede" element={<Multisede />} />
             <Route path="/configuracion" element={<Configuracion />} />
             <Route path="/empleados/:id" element={<DetalleEmpleados />} /> 

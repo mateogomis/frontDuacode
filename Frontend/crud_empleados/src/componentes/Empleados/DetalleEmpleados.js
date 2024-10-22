@@ -2,13 +2,13 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useWindowSize } from "react-use";
-import Header from "./Header";
+import Header from "../Header";
 import DetalleEmplCarta from "./DetalleEmplCarta";
-import MensajeCumple from "./MensajeCumple";
-import Confettis from "./Confettis";
-import Spinner from "./Spinner";
-import MensajeError from "./MensajeError";
-import "../styles/DetalleEmpleados.css";
+import MensajeCumple from "../MensajeCumple";
+import Confettis from "../Confettis";
+import Spinner from "../Spinner";
+import MensajeError from "../MensajeError";
+import "../../styles/DetalleEmpleados.css";
 
 const DetalleEmpleados = () => {
   const { id } = useParams();

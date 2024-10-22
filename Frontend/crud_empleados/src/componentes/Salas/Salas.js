@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // Asegúrate de importar useParams
 import axios from 'axios';
 import SalaList from './SalaList';
-import '../styles/salas.css';
+import '../../styles/salas.css';
 
 const Salas = () => {
   const { sedeId } = useParams(); // Ahora useParams estará correctamente definido

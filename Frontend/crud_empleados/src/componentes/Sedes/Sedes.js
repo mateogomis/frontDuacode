@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SedeCard from './SedeCard';
-import MovingBar from './MovingBar';
-import Footer from './Footer';
-import '../styles/sedes.css';
+import MovingBar from '../MovingBar';
+import Footer from '../Footer';
+import '../../styles/sedes.css';
 
 const Sedes = () => {
   const [sedes, setSedes] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import SalaCard from './SalaCard';
-import '../styles/carrusel.css'; // Asegúrate de tener los estilos aquí
+import '../../styles/carrusel.css'; // Asegúrate de tener los estilos aquí
 
 const SalaList = ({ salas }) => {
   const carruselRef = useRef(null);

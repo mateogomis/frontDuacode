@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Header from "./Header";
+import Header from "../Header";
 import ProyectoGrid from "./ProyectoGrid";
-import LoadMoreButton from "./LoadMoreButton";
-import Spinner from "./Spinner";
+import LoadMoreButton from "../LoadMoreButton";
+import Spinner from "../Spinner";
 
 const Proyectos = () => {
   const [proyectos, setProyectos] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import '../styles/DetalleProyectos.css';
+import '../../styles/DetalleProyectos.css';
 
 const DetalleProyectos = () => {
     const { id } = useParams(); // Obtener el ID del proyecto de la URL

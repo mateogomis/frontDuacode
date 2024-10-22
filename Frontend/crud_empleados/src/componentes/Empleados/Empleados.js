@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Header from "./Header";
+import Header from "../Header";
 import EmployeeGrid from "./EmployeeGrid";
-import LoadMoreButton from "./LoadMoreButton";
-import Spinner from "./Spinner";
-import "../styles/empleados.css";
+import LoadMoreButton from "../LoadMoreButton";
+import Spinner from "../Spinner";
+import "../../styles/empleados.css";
 
 const Empleados = () => {
   const [empleados, setEmpleados] = useState([]);
