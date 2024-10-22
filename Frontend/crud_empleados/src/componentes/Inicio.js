@@ -4,8 +4,8 @@ import EmpleadoManager from './EmpleadoManager';
 import Proyectos from './Proyectos';
 import Configuracion from './Configuracion';
 import Multisede from './Multisede';
-import Organigrama from './Organigrama';
-import Protocolo from './Protocolo';
+import Organigrama from './Organigrama/Organigrama';
+import Protocolo from './Protocolos/Protocolos';
 import Salas from './Salas';
 import '../styles/inicio.css'; // Asegúrate de que este archivo esté correctamente vinculado
 import Principal from './Principal';
@@ -42,7 +42,7 @@ function Inicio() {
           <li><Link to="/proyectos" onClick={toggleMenu}>Proyectos</Link></li>
           <li><Link to="/organigrama" onClick={toggleMenu}>Organigrama</Link></li>
           <li><Link to="/protocolo" onClick={toggleMenu}>Protocolos</Link></li>
-          <li><Link to="/multisede" onClick={toggleMenu}>Multisede</Link></li>
+          {/* <li><Link to="/multisede" onClick={toggleMenu}>Multisede</Link></li> */}
           <li><Link to="/configuracion" onClick={toggleMenu}>Configuración</Link></li>
         </ul>
       </div>
