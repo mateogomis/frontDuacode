@@ -1,56 +1,51 @@
-
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import useFetchData from './scripts/useFetchData'; // Asegúrate de que la ruta sea correcta
+import EditarPerfil from './EditarPerfil'; // Asegúrate de que la ruta sea correcta
 
 const Perfil = ({ id, setIsAuthenticated, onLogout }) => {
-  const [employeeData, setEmployeeData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchEmployeeData = async () => {
-      try {
-        const response = await fetch(`http://localhost:8000/api/empleados/${id}/`);
-        if (!response.ok) {
-          throw new Error('Error al obtener los datos del empleado');
-        }
-        const data = await response.json();
-        setEmployeeData(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEmployeeData();
-  }, [id]);
+  const { data: employeeData, error } = useFetchData(`http://localhost:8000/api/empleados/${id}/`);
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleLogout = () => {
     // Aquí puedes agregar cualquier lógica adicional antes de cerrar sesión
     onLogout(); // Llama a la función onLogout que apaga la webcam
   };
 
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p>{error}</p>;
+  const handleSave = (updatedData) => {
+    // Aquí puedes manejar la actualización del estado en el componente padre si es necesario
+    setIsEditing(false);
+  };
+
+  if (!employeeData) {
+    if (error) return <p>{error.message}</p>;
+    return <p>Cargando...</p>;
+  }
 
   return (
     <div>
-      <h1>Perfil de Empleado</h1>
-      {employeeData ? (
-        <div>
-          <p>ID del Empleado: {employeeData.id}</p>
-          <p>Nombre: {employeeData.nombre} {employeeData.apellido_1} {employeeData.apellido_2}</p>
-          <p>Email: {employeeData.email}</p>
-          <p>Teléfono: {employeeData.telefono}</p>
-          <p>Puesto: {employeeData.puesto}</p>
-          <p>Fecha de Contratación: {new Date(employeeData.fecha_contratación).toLocaleDateString()}</p>
-          <p>Cumpleaños: {new Date(employeeData.cumpleaños).toLocaleDateString()}</p>
-          {employeeData.foto && <img src={employeeData.foto} alt={`${employeeData.nombre} ${employeeData.apellido_1}`} />}
-        </div>
+      {isEditing ? (
+        <EditarPerfil 
+          id={id} 
+          onSave={handleSave} 
+          onCancel={() => setIsEditing(false)} 
+        />
       ) : (
-        <p>No se encontró el empleado.</p>
+        <>
+          <h1>Perfil de Empleado</h1>
+          <div>
+            <p>ID del Empleado: {employeeData.id}</p>
+            <p>Nombre: {employeeData.nombre} {employeeData.apellido_1} {employeeData.apellido_2}</p>
+            <p>Email: {employeeData.email}</p>
+            <p>Teléfono: {employeeData.telefono}</p>
+            <p>Puesto: {employeeData.puesto}</p>
+            <p>Fecha de Contratación: {new Date(employeeData.fecha_contratación).toLocaleDateString()}</p>
+            <p>Cumpleaños: {new Date(employeeData.cumpleaños).toLocaleDateString()}</p>
+            {employeeData.foto && <img src={employeeData.foto} alt={`${employeeData.nombre} ${employeeData.apellido_1}`} />}
+          </div>
+          <button onClick={handleLogout}>Cerrar Sesión</button>
+          <button onClick={() => setIsEditing(true)}>Modificar Datos</button>
+        </>
       )}
-      <button onClick={handleLogout}>Cerrar Sesión</button>
     </div>
   );
 };
