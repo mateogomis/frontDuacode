@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 import EmpleadoManager from './Empleados/EmpleadoManager';
 import Proyectos from './Proyectos/Proyectos';
-import Configuracion from './Configuracion';
+import Configuracion from './Configuracion/Configuracion';
 import Multisede from './Multisede';
 import Organigrama from './Organigrama/Organigrama';
 import Protocolo from './Protocolos/Protocolos';
