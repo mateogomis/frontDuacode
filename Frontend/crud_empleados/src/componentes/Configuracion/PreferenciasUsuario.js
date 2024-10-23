@@ -1,14 +1,24 @@
-//Este componente gestiona las preferencias de tema e idioma.
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Preferencias = () => {
-  const [tema, setTema] = useState('Claro');
+  const [tema, setTema] = useState('Claro'); // Por defecto, tema claro
   const [idioma, setIdioma] = useState('Español');
   const [recibirNotificaciones, setRecibirNotificaciones] = useState(true);
+  const { i18n } = useTranslation();
+
+  // Cambia el tema aplicando una clase al body
+  useEffect(() => {
+    document.body.className = tema === 'Oscuro' ? 'dark-theme' : 'light-theme';
+  }, [tema]);
+
+  // Cambia el idioma usando i18next
+  useEffect(() => {
+    i18n.changeLanguage(idioma === 'Español' ? 'es' : 'en');
+  }, [idioma, i18n]);
 
   const handleGuardarPreferencias = (e) => {
     e.preventDefault();
-    // Lógica para guardar preferencias
     alert('Preferencias guardadas');
   };
 
@@ -24,18 +34,15 @@ const Preferencias = () => {
           <option value="Español">Español</option>
           <option value="Inglés">Inglés</option>
         </select>
-        
-        {/* Agrupamos la casilla y el texto en un contenedor */}
         <div className="checkbox-container">
-        <label htmlFor="recibirNotificaciones">Recibir Notificaciones</label>
-          <input 
-            type="checkbox" 
-            checked={recibirNotificaciones} 
-            onChange={(e) => setRecibirNotificaciones(e.target.checked)} 
+          <label htmlFor="recibirNotificaciones">Recibir Notificaciones</label>
+          <input
+            type="checkbox"
+            checked={recibirNotificaciones}
+            onChange={(e) => setRecibirNotificaciones(e.target.checked)}
             id="recibirNotificaciones"
           />
         </div>
-        
         <button type="submit">Guardar Preferencias</button>
       </form>
     </div>

@@ -1,89 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import LectorQr from './LectorQr'
+import React, { useState } from 'react';
+import useFetchData from './scripts/useFetchData'; // Asegúrate de que la ruta sea correcta
+import EditarPerfil from './EditarPerfil'; // Asegúrate de que la ruta sea correcta
 
-const Perfil = ({ id }) => {
-  const [employeeInfo, setEmployeeInfo] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+const Perfil = ({ id, setIsAuthenticated, onLogout }) => {
+  const { data: employeeData, error } = useFetchData(`http://localhost:8000/api/empleados/${id}/`);
+  const [isEditing, setIsEditing] = useState(false);
 
-  useEffect(() => {
-    const fetchEmployeeInfo = async () => {
-      try {
-        const response = await fetch(`http://localhost:8000/api/empleados/${id}/`, {
-          method: 'GET',
-          credentials: 'include',
-        });
-
-        if (!response.ok) {
-          throw new Error('Error al obtener la información del empleado');
-        }
-
-        const data = await response.json();
-        setEmployeeInfo(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEmployeeInfo();
-  }, [id]);
-
-  const getCsrfToken = () => {
-    const cookies = document.cookie.split('; ');
-    const csrfCookie = cookies.find(cookie => cookie.startsWith('csrftoken='));
-    return csrfCookie ? csrfCookie.split('=')[1] : '';
+  const handleLogout = () => {
+    // Aquí puedes agregar cualquier lógica adicional antes de cerrar sesión
+    onLogout(); // Llama a la función onLogout que apaga la webcam
   };
 
-  const handleLogout = async () => {
-    // try {
-    //   const response = await fetch('http://localhost:8000/auth/logout/', {
-    //     method: 'POST',
-    //     credentials: 'include',
-    //     headers: {
-    //       'X-CSRFToken': getCsrfToken(), // Incluye el token CSRF en los headers
-    //     },
-    //   });
-
-      // if (response.ok) {           
-    // return <LectorQr />; 
-        // navigate('/'); // Redirige a KioskoDuacode después de logout
-    //   } else {
-    //     console.error('Error al hacer logout');
-    //   }
-    // } catch (error) {
-    //   console.error('Error al hacer logout:', error);
-    // }
+  const handleSave = (updatedData) => {
+    // Aquí puedes manejar la actualización del estado en el componente padre si es necesario
+    setIsEditing(false);
   };
 
-  if (loading) {
-    return <div>Cargando...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
+  if (!employeeData) {
+    if (error) return <p>{error.message}</p>;
+    return <p>Cargando...</p>;
   }
 
   return (
-    <div className="perfil-container" style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <div className="info-section" style={{ flex: 1 }}>
-        <h2>Perfil de {employeeInfo.nombre}</h2>
-        <p><strong>Apellido:</strong> {employeeInfo.apellido_1} {employeeInfo.apellido_2}</p>
-        <p><strong>Email:</strong> {employeeInfo.email}</p>
-        <p><strong>Teléfono:</strong> {employeeInfo.telefono}</p>
-        <p><strong>Puesto:</strong> {employeeInfo.puesto}</p>
-        <p><strong>Fecha de Contratación:</strong> {new Date(employeeInfo.fecha_contratación).toLocaleDateString()}</p>
-        <p><strong>Cumpleaños:</strong> {new Date(employeeInfo.cumpleaños).toLocaleDateString()}</p>
-        <img src={employeeInfo.foto} alt={`${employeeInfo.nombre} ${employeeInfo.apellido_1}`} />
-      </div>
-      <div className="logout-section" style={{ alignSelf: 'center' }}>
-        <button onClick={handleLogout} className="logout-button">Logout</button>
-      </div>
+    <div>
+      {isEditing ? (
+        <EditarPerfil 
+          id={id} 
+          onSave={handleSave} 
+          onCancel={() => setIsEditing(false)} 
+        />
+      ) : (
+        <>
+          <h1>Perfil de Empleado</h1>
+          <div>
+            <p>ID del Empleado: {employeeData.id}</p>
+            <p>Nombre: {employeeData.nombre} {employeeData.apellido_1} {employeeData.apellido_2}</p>
+            <p>Email: {employeeData.email}</p>
+            <p>Teléfono: {employeeData.telefono}</p>
+            <p>Puesto: {employeeData.puesto}</p>
+            <p>Fecha de Contratación: {new Date(employeeData.fecha_contratación).toLocaleDateString()}</p>
+            <p>Cumpleaños: {new Date(employeeData.cumpleaños).toLocaleDateString()}</p>
+            {employeeData.foto && <img src={employeeData.foto} alt={`${employeeData.nombre} ${employeeData.apellido_1}`} />}
+          </div>
+          <button onClick={handleLogout}>Cerrar Sesión</button>
+          <button onClick={() => setIsEditing(true)}>Modificar Datos</button>
+        </>
+      )}
     </div>
   );
 };
 
 export default Perfil;
+

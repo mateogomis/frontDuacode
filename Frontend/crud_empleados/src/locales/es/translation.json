@@ -1,0 +1,33 @@
+{
+    "sedes": {
+      "verSalasDisponibles": "Ver Salas Disponibles",
+      "ubicacion": "Ubicación",
+      "tipoPrincipal": "Edificio Principal",
+      "tipoInternacional": "Internacional",
+      "tipoUniversidad": "Universidad"
+    },
+    "mensajes": {
+      "cargandoSedes": "Cargando sedes...",
+      "errorCargarSedes": "Error al cargar sedes",
+      "noSedesDisponibles": "No hay sedes disponibles",
+      "loading": "Error al cargar los datos del empleado."
+    },
+    "email": "Email",
+    "telefono": "Teléfono",
+    "puesto": "Puesto",
+    "fechaContratacion": "Fecha de Contratación",
+    "cumpleaños": "Cumpleaños",
+    "estado": "Estado",
+    "enBaja": "Está de baja",
+    "noEnBaja": "No está de baja",
+    "inicio": "Inicio",
+    "empleados": "Empleados",
+    "detalleEmpleado": "Detalle Empleado",
+    "salas": "Salas",
+    "proyectos": "Proyectos",
+    "organigrama": "Organigrama",
+    "protocolos": "Protocolos",
+    "configuracion": "Configuración",
+    "menuHeader": "duacode"
+  }
+  

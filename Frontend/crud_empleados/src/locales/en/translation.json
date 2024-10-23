@@ -1,0 +1,33 @@
+{
+    "sedes": {
+      "verSalasDisponibles": "View Available Rooms",
+      "ubicacion": "Location",
+      "tipoPrincipal": "Main Building",
+      "tipoInternacional": "International",
+      "tipoUniversidad": "University"
+    },
+    "mensajes": {
+      "cargandoSedes": "Loading branches...",
+      "errorCargarSedes": "Error loading branches",
+      "noSedesDisponibles": "No branches available",
+      "loading": "Error loading employee data."
+    },
+    "email": "Email",
+    "telefono": "Phone",
+    "puesto": "Position",
+    "fechaContratacion": "Hiring Date",
+    "cumpleaños": "Birthday",
+    "estado": "Status",
+    "enBaja": "On leave",
+    "noEnBaja": "Not on leave",
+    "inicio": "Home",
+    "empleados": "Employees",
+    "detalleEmpleado": "Employee Detail",
+    "salas": "Rooms",
+    "proyectos": "Projects",
+    "organigrama": "Organigram",
+    "protocolos": "Protocols",
+    "configuracion": "Settings",
+    "menuHeader": "duacode"
+  }
+  
