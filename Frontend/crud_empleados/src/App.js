@@ -1,8 +1,13 @@
 
-
 import React from "react";
 import Inicio from "./componentes/Inicio";
 import Principal from "./componentes/Principal";
+
+
+/* Otros estilos globales aquí */
+
+
+
 
 function App() {
   return (
