@@ -1,24 +1,26 @@
-// App.js
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import KioskoDuacode from './componentes/Kiosko/KioskoDuacode'; // Si aún lo necesitas
-import PanelEmpleados from './componentes/Kiosko/PanelEmpleados';
+
+import React from "react";
+import Inicio from "./componentes/Inicio";
+import Principal from "./componentes/Principal";
+
+
+/* Otros estilos globales aquí */
+
+
+
 
 function App() {
   return (
-    <Router>
-      <div className="content-wrapper"> {/* Contenedor para el contenido */}
-        <Routes>
-          <Route path="/empleados" element={<PanelEmpleados />} />
-          <Route path="/" element={<KioskoDuacode />} /> {/* Muestra KioskoDuacode en la ruta principal */}
-          {/* Agrega más rutas aquí según sea necesario */}
-          <Route path="/proyectos" element={<h2>Lista de Proyectos</h2>} />
-          <Route path="/sedes" element={<h2>Lista de Sedes</h2>} />
-          <Route path="/salas" element={<h2>Lista de Salas</h2>} />
-          {/* <Route path="/perfil/:id" component={Perfil} /> */}
-        </Routes>
+    <>
+      <Inicio>
+        <Principal />
+      </Inicio>{" "}
+      {/* El menú siempre estará visible */}
+      <div className="content-wrapper">
+        {" "}
+        {/* Contenedor para todo el contenido */}
       </div>
-    </Router>
+    </>
   );
 }
 

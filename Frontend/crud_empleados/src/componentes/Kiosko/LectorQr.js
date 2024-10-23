@@ -74,13 +74,6 @@ const LectorQr = () => {
     };
   }, [isAuthenticated]);
 
-  useEffect(() => {
-    if (qrScanned && username && password) {
-      // Solo enviar el formulario si se ha escaneado el QR y los campos están completos
-      handleSubmit();
-    }
-  }, [qrScanned, username, password]); // El efecto se ejecuta cuando se han leído el QR y ambos valores están completos
-
   const handleSubmit = async () => {
     const response = await fetch('http://localhost:8000/auth/login/', {
       method: 'POST',
@@ -106,6 +99,13 @@ const LectorQr = () => {
       setWelcomeMessage(errorData.error || "Error al iniciar sesión");
     }
   };
+  useEffect(() => {
+    if (qrScanned && username && password) {
+      // Solo enviar el formulario si se ha escaneado el QR y los campos están completos
+      handleSubmit();
+    }
+  }, [qrScanned, username, password]); // El efecto se ejecuta cuando se han leído el QR y ambos valores están completos
+
 
   const handleLogout = () => {
     setIsAuthenticated(false);
