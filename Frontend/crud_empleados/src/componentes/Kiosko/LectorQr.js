@@ -112,9 +112,6 @@ const LectorQr = () => {
     setWelcomeMessage(""); // Limpia el mensaje de bienvenida
   };
 
-  // Añadir console logs para depurar
-  console.log("isAuthenticated:", isAuthenticated);
-  console.log("employeeId (welcomeMessage):", welcomeMessage);
 
   // Renderiza el Perfil si el usuario está autenticado y el ID está definido
   if (isAuthenticated && welcomeMessage) {
@@ -162,3 +159,4 @@ const LectorQr = () => {
 };
 
 export default LectorQr;
+
