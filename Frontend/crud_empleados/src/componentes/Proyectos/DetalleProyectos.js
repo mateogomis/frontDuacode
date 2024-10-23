@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../../styles/DetalleProyectos.css';
-
+//detalle proy
 const DetalleProyectos = () => {
     const { id } = useParams();
     const [ProyectoDetail, setProyectoDetail] = useState(null);
