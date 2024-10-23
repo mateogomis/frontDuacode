@@ -6,9 +6,8 @@ const LectorQr = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [csrfToken, setCsrfToken] = useState("");
-  const [welcomeMessage, setWelcomeMessage] = useState("");
+  const [welcomeMessage, setWelcomeMessage] = useState(""); // Este almacenará el ID del empleado
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [qrScanned, setQrScanned] = useState(false); // Nuevo estado para controlar si ya se ha escaneado el QR
   const videoRef = useRef(null);
   const videoStreamRef = useRef(null);
 
@@ -40,6 +39,7 @@ const LectorQr = () => {
       }
     };
 
+    // Solo inicia el flujo de video si el usuario está autenticado
     if (isAuthenticated) {
       startVideoStream();
     }
@@ -59,29 +59,27 @@ const LectorQr = () => {
 
           setUsername(newUsername);
           setPassword(newPassword);
-          setQrScanned(true); // Indica que el QR se ha escaneado correctamente
         }
+        // if (err && !(err instanceof window.ZXing.NotFoundException)) {
+        //   console.error(err);
+        // }
       });
     };
     document.body.appendChild(script);
 
     return () => {
+      // Detén el flujo de video al desmontar el componente
       if (videoStreamRef.current) {
         const tracks = videoStreamRef.current.getTracks();
         tracks.forEach(track => track.stop());
       }
       document.body.removeChild(script);
     };
-  }, [isAuthenticated]);
+  }, [isAuthenticated]); // Ejecutar nuevamente si isAuthenticated cambia
 
-  useEffect(() => {
-    if (qrScanned && username && password) {
-      // Solo enviar el formulario si se ha escaneado el QR y los campos están completos
-      handleSubmit();
-    }
-  }, [qrScanned, username, password]); // El efecto se ejecuta cuando se han leído el QR y ambos valores están completos
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const handleSubmit = async () => {
     const response = await fetch('http://localhost:8000/auth/login/', {
       method: 'POST',
       headers: {
@@ -98,8 +96,8 @@ const LectorQr = () => {
     if (response.ok) {
       const data = await response.json();
       console.log("Inicio de sesión exitoso:", data);
-      setWelcomeMessage(data.message);
-      setIsAuthenticated(true);
+      setWelcomeMessage(data.message); // Aquí estamos guardando el ID del empleado
+      setIsAuthenticated(true); // Cambia el estado a autenticado
     } else {
       const errorData = await response.json();
       console.error("Error al iniciar sesión:", errorData);
@@ -108,13 +106,14 @@ const LectorQr = () => {
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
-    setUsername("");
-    setPassword("");
-    setWelcomeMessage("");
-    setQrScanned(false); // Reinicia el estado del QR escaneado
+    setIsAuthenticated(false); // Reinicia la autenticación
+    setUsername(""); // Limpia el nombre de usuario
+    setPassword(""); // Limpia la contraseña
+    setWelcomeMessage(""); // Limpia el mensaje de bienvenida
   };
 
+
+  // Renderiza el Perfil si el usuario está autenticado y el ID está definido
   if (isAuthenticated && welcomeMessage) {
     return <Perfil id={welcomeMessage} setIsAuthenticated={setIsAuthenticated} onLogout={handleLogout} />;
   }
@@ -160,3 +159,4 @@ const LectorQr = () => {
 };
 
 export default LectorQr;
+
