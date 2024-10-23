@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import './LectorQr.css';
-import Perfil from './Perfil'; // Asegúrate de importar el componente Perfil
+import Perfil from './Perfil';
 
 const LectorQr = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [csrfToken, setCsrfToken] = useState("");
-  const [welcomeMessage, setWelcomeMessage] = useState("");
+  const [welcomeMessage, setWelcomeMessage] = useState(""); // Este almacenará el ID del empleado
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [employeeId, setEmployeeId] = useState(null); // Aquí se almacena el ID del empleado
   const videoRef = useRef(null);
+  const videoStreamRef = useRef(null);
 
   const getCookie = (name) => {
     let cookieValue = null;
@@ -30,6 +30,20 @@ const LectorQr = () => {
     const csrfTokenValue = getCookie("csrftoken");
     setCsrfToken(csrfTokenValue);
 
+    const startVideoStream = async () => {
+      try {
+        videoStreamRef.current = await navigator.mediaDevices.getUserMedia({ video: true });
+        videoRef.current.srcObject = videoStreamRef.current;
+      } catch (err) {
+        console.error("Error al acceder a la cámara:", err);
+      }
+    };
+
+    // Solo inicia el flujo de video si el usuario está autenticado
+    if (isAuthenticated) {
+      startVideoStream();
+    }
+
     const script = document.createElement("script");
     script.src = "https://unpkg.com/@zxing/library@latest";
     script.async = true;
@@ -39,24 +53,29 @@ const LectorQr = () => {
       codeReader.decodeFromVideoDevice(null, videoRef.current, (result, err) => {
         if (result) {
           const employeeData = JSON.parse(result.text);
+          console.log("Empleado encontrado:", employeeData);
           const newUsername = `${employeeData.nombre}.${employeeData.apellido_1}`;
           const newPassword = employeeData.contraseña;
 
           setUsername(newUsername);
           setPassword(newPassword);
-          setEmployeeId(employeeData.id); // Asigna el ID del empleado
         }
-        if (err && !(err instanceof window.ZXing.NotFoundException)) {
-          console.error(err);
-        }
+        // if (err && !(err instanceof window.ZXing.NotFoundException)) {
+        //   console.error(err);
+        // }
       });
     };
     document.body.appendChild(script);
 
     return () => {
+      // Detén el flujo de video al desmontar el componente
+      if (videoStreamRef.current) {
+        const tracks = videoStreamRef.current.getTracks();
+        tracks.forEach(track => track.stop());
+      }
       document.body.removeChild(script);
     };
-  }, []);
+  }, [isAuthenticated]); // Ejecutar nuevamente si isAuthenticated cambia
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -76,27 +95,34 @@ const LectorQr = () => {
 
     if (response.ok) {
       const data = await response.json();
-      setWelcomeMessage(data.message); // Asigna el mensaje de bienvenida devuelto
+      console.log("Inicio de sesión exitoso:", data);
+      setWelcomeMessage(data.message); // Aquí estamos guardando el ID del empleado
       setIsAuthenticated(true); // Cambia el estado a autenticado
     } else {
       const errorData = await response.json();
+      console.error("Error al iniciar sesión:", errorData);
       setWelcomeMessage(errorData.error || "Error al iniciar sesión");
     }
   };
 
   const handleLogout = () => {
-    // Lógica para manejar el cierre de sesión
-    window.location.href = "/logout"; // Asegúrate de que esta ruta es correcta
+    setIsAuthenticated(false); // Reinicia la autenticación
+    setUsername(""); // Limpia el nombre de usuario
+    setPassword(""); // Limpia la contraseña
+    setWelcomeMessage(""); // Limpia el mensaje de bienvenida
   };
 
-  // Renderiza el Perfil si el usuario está autenticado
-  if (isAuthenticated) {
-    return <Perfil id={welcomeMessage} />; // Pasa el ID del empleado al componente Perfil
+  // Añadir console logs para depurar
+  console.log("isAuthenticated:", isAuthenticated);
+  console.log("employeeId (welcomeMessage):", welcomeMessage);
+
+  // Renderiza el Perfil si el usuario está autenticado y el ID está definido
+  if (isAuthenticated && welcomeMessage) {
+    return <Perfil id={welcomeMessage} setIsAuthenticated={setIsAuthenticated} onLogout={handleLogout} />;
   }
 
   return (
     <div className="container">
-      {welcomeMessage && <div className="alert alert-info">{welcomeMessage}</div>}
       <div className="form-container">
         <form id="loginForm" onSubmit={handleSubmit}>
           <div className="form-group">
@@ -127,10 +153,10 @@ const LectorQr = () => {
       </div>
 
       <div className="video-container">
-        <video id="preview" ref={videoRef} width="340" height="270"></video>
+        <video id="preview" ref={videoRef} width="340" height="270" autoPlay></video>
       </div>
 
-      {welcomeMessage && <button onClick={handleLogout}>Cerrar Sesión</button>}
+      {welcomeMessage && <div className="welcome-message">{welcomeMessage}</div>}
     </div>
   );
 };
