@@ -9,8 +9,10 @@ import Confettis from "../Confettis";
 import Spinner from "../Spinner";
 import MensajeError from "../MensajeError";
 import "../../styles/DetalleEmpleados.css";
+import { useTranslation } from 'react-i18next'; // Importa useTranslation
 
 const DetalleEmpleados = () => {
+  const { t } = useTranslation(); // Usa `t` para traducir
   const { id } = useParams();
   const [empleadoDetail, setEmpleadoDetail] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -71,14 +73,12 @@ const DetalleEmpleados = () => {
   }, [esCumpleaños]);
 
   if (loading) return <Spinner />;
-  if (error) return <MensajeError error={error.message} />;
+  if (error) return <MensajeError error={t('error.loading')} />; // Usa traducción
 
   return (
     <div className="detalle-empleado-container">
       <Header />
-
       {showBirthdayMessage && <MensajeCumple name={empleadoDetail.nombre} />}
-
       {showConfetti && (
         <Confettis
           width={width}
@@ -86,10 +86,10 @@ const DetalleEmpleados = () => {
           confettiPieces={confettiPieces}
         />
       )}
-
       {empleadoDetail && (
         <DetalleEmplCarta empleadoDetail={empleadoDetail} />
       )}
+      <p>{t('')}</p> {/* Traducción aquí */}
     </div>
   );
 };
